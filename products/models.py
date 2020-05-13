@@ -6,6 +6,7 @@ class Product(models.Model):
     GENRE_CHOICES = (('RO','Rock'),
     ('PO', 'Pop'),
     ('RB', 'R&B'),
+    ('RH', 'Rap and Hip-Hop'),
     ('ME', 'Metal'),
     ('CL', 'Classical'),
     ('JA', 'Jazz'),
@@ -28,7 +29,14 @@ class Product(models.Model):
     cover = models.ImageField(upload_to='images')
     offer = models.CharField(choices=OFFER_CHOICES, max_length=1)
 
-class Tracks(models.Model):
-    album = models.ForeignKey('Product', on_delete=models.CASCADE)
+    def __str__(self):
+        return "{0} - {1}".format(self.artist, self.album)
+
+class Track(models.Model):
+    album = models.ForeignKey(Product)
+    number = models.IntegerField(default=0)
     track = models.CharField(max_length=200)
     length = models.TimeField()
+
+    def __str__(self):
+        return "{0} - {1}".format(self.album, self.track)
