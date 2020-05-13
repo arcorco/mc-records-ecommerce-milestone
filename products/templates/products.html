@@ -1,0 +1,21 @@
+{%  extends 'base.html' %}
+{% load cloudinary %}
+{% block content %}
+<div class="container">
+    <div class="row row-flex">
+        {% for product in products %}
+        <div class="col s4">
+            <div class="">
+                <div class="product">
+                    {% cloudinary product.cover width=200 height=200 %}
+                </div>
+                <h3>{{ product.album }}</h3>
+                <h4>{{ product.artist }}</h4>
+                <p>{{ product.price }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
