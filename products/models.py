@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -26,7 +27,7 @@ class Product(models.Model):
     genre = models.CharField(choices=GENRE_CHOICES, max_length=2)
     release_date = models.DateField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    cover = models.ImageField(upload_to='images')
+    cover = CloudinaryField('image')
     offer = models.CharField(choices=OFFER_CHOICES, max_length=1)
 
     def __str__(self):

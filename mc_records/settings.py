@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts',
     'django_forms_bootstrap',
     'products',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -125,6 +126,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+
+CLOUDINARY_CLOUD_NAME = os.environ.get("cloud_name")
+CLOUDINARY_API_KEY = os.environ.get("api_key")
+CLOUDINARY_API_SECRET = os.environ.get("secret_key")
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
