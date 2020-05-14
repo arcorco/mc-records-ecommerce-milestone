@@ -1,42 +1,48 @@
 {% extends 'base.html' %}
 {% load cloudinary %}
 {% load bootstrap_tags %}
+{% load mathfilters %}
 
 {% block content %}
-{% for item in cart_items %}
-<div class="row">
-    <div class="col s3">
-        {% cloudinary item.product.cover width=200 height=200 %}
-    </div>
-    <div class="col s3">
-        <h4>{{ item.product.album }}</h4>
-        <h5>{{ item.product.artist }}</h5>
-    </div>
-    <div class="col s3">
-        <p>
-            <form action="{% url 'adjust_cart' item.id %}" method="POST" class="form-inline">
-                {% csrf_token %}
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-addon">Quantity</div>
-                        <input type="number" name="quantity" min="0" max="25" class="form-control" value="{{ item.quantity }}">
+<div class="container">
+    {% for item in cart_items %}
+    <div class="row">
+        <div class="col s3">
+            {% cloudinary item.product.cover width=200 height=200 %}
+        </div>
+        <div class="col s4">
+            <h4>{{ item.product.album }}</h4>
+            <h5>{{ item.product.artist }}</h5>
+            <p>£{{ item.product.price }}</p>
+        </div>
+        <div class="col s3">
+            <p>
+                <form action="{% url 'adjust_cart' item.id %}" method="POST" class="form-inline">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">Quantity</div>
+                            <input type="number" name="quantity" min="0" max="25" class="form-control"
+                                value="{{ item.quantity }}">
+                        </div>
                     </div>
-                </div>
-                <button type="submit" class="btn waves-effect waves-light">Amend</button>
-            </form>
-        </p>
+                    <button type="submit" class="btn waves-effect waves-light">Amend</button>
+                </form>
+            </p>
+        </div>
+        <div class="col s2 right-align">
+            <h5>Subtotal:</h5>
+            <p>£{{ item.quantity|mul:item.product.price }}</p>
+        </div>
     </div>
-    <div class="col s3">
-        <div class="col s6 left-align">
-        <h5>Price</h5>
-        <p>{{ item.product.price }}</p>
-    </div>
-    <div class="col s6 right-align">
-        <h5>Subtotal:</h5>
-        <p>{{ item.quantity }}*{{ item.product.price }}</p>
-    </div>
+    {% endfor %}
+    <div class="row right-align">
+        <p>Total:</p>
+        <p>£{{ total }}</p>
+        <a href="/" class="btn waves-effect waves-light" role="button">Continue to checkout</a>
     </div>
 </div>
-{% endfor %}
+
+
 
 {% endblock %}
