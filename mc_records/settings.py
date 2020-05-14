@@ -137,3 +137,7 @@ CLOUDINARY_API_SECRET = os.environ.get("secret_key")
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]

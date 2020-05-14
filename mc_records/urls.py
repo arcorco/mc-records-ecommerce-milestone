@@ -18,10 +18,12 @@ from django.contrib import admin
 from accounts import urls as urls_accounts
 from products import urls as urls_products
 from cart import urls as urls_cart
+from search import urls as urls_search
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(urls_accounts)),
     url(r'^products/', include(urls_products), name="products"),
     url(r'^cart/', include(urls_cart)),
+    url(r'^search/', include(urls_search)),
 ]

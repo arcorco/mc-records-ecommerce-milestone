@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +8,7 @@
     <title>{% block page_title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 
 </head>
@@ -22,6 +23,29 @@
             <li class="nav-item"><a href="{% url 'login' %}">Login</a></li>
             <li class="nav-item"><a href="{% url 'registration' %}">Register</a></li>
             {% endif %}
+            <li class="nav-item">
+                <div class="nav-wrapper">
+                    <form method="GET" action="{% url 'search' %}">
+                        <div class="input-field">
+                            <input id="search" type="search" name="q" required>
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div class="nav-wrapper">
+                    <a href="{% url 'view_cart' %}">
+                        <i class="material-icons cart-badge-icon">shopping_cart</i>
+                        {% if product_count > 0 %}
+                        <span class="new badge right cart-badge-icon" data-badge-caption="">
+                            {{ product_count }}
+                        </span>
+                        {% endif %}
+                    </a>
+                </div>
+            </li>
         </ul>
     </nav>
     <h1>{% block page_heading %}{% endblock %}</h1>
