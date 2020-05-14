@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'products',
     'cloudinary',
     'cart',
+    'mathfilters',
 ]
 
 MIDDLEWARE = [
