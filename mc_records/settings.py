@@ -27,7 +27,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["mc-records-ecommerce-milestone.herokuapp.com"]
+ALLOWED_HOSTS = ["mc-records-ecommerce-milestone.herokuapp.com",
+"127.0.0.1"]
 
 
 # Application definition
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'cart',
     'mathfilters',
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -145,7 +147,6 @@ CLOUDINARY_API_SECRET = os.environ.get("secret_key")
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
