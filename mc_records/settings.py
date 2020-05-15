@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'cart',
     'mathfilters',
     'home',
+    'whitenoise',
 ]
 
 MIDDLEWARE = [
