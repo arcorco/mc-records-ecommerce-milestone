@@ -1,8 +1,52 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load cloudinary %}
 
 {% block content %}
-
-<h1>Home</h1>
+<div class="row">
+<h3 class="center">Hot New Music</h3>
+</div>
+<div class="row center-align">
+    {% for item in recently_released %}
+    <div class="col s4">
+        <div class="product">
+            {% cloudinary item.cover width=200 height=200 %}
+        </div>
+        <h4>{{ item.album }}</h4>
+    </div>
+    {% endfor %}
+</div>
+<div class="row center">
+    <h3>Artist Spotlight</h3>
+</div>
+<div class="row center-align container">
+    {% for item in products %}
+    {% if item.artist == "David Bowie" %}
+        <div class="product">
+            {% cloudinary item.cover width=450 height=450 %}
+        </div>
+        <h4>{{ item.artist }}</h4>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+<div class="row center-align container">
+    <h3>Explore the decades...</h3>
+</div>
+<div class="row container">
+    <div class="col s6">
+        <img class="decades" src="{% static 'images/70s.jpg' %}" alt="70s">
+    </div>
+    <div class="col s6">
+        <img class="decades" src="{% static 'images/80s.jpg' %}" alt="80s">
+    </div>
+    <div class="col s6">
+        <img class="decades" src="{% static 'images/90s.jpg' %}" alt="90s">
+    </div>
+    <div class="col s6">
+        <img class="decades" src="{% static 'images/00s.png' %}" alt="00s">
+    </div>
+</div>
 
 {% endblock %}
 
