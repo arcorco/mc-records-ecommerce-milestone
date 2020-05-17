@@ -2,25 +2,21 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from accounts.forms import UserLoginForm, UserRegistrationForm
+from accounts.forms import UserLoginForm, UserRegistrationForm, EditProfileForm
 
 # Create your views here.
-
-def index(request):
-    """Return the index.html file"""
-    return render(request, "index.html")
 
 @login_required
 def logout(request):
     """Log the user out"""
     auth.logout(request)
     messages.success(request, "You have successfully been logged out!")
-    return redirect(reverse('index'))
+    return redirect(reverse('home'))
 
 def login(request):
     """Return a login page"""
     if request.user.is_authenticated:
-        return redirect(reverse('index'))
+        return redirect(reverse('home'))
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
 
@@ -30,7 +26,7 @@ def login(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have succesfully logged in!")
-                return redirect(reverse('index'))
+                return redirect(reverse('profile'))
             else:
                 login_form.add_error(None, "Your username or password is incorrect.")
 
@@ -41,7 +37,7 @@ def login(request):
 def registration(request):
     """Render the registration page"""
     if request.user.is_authenticated:
-        return redirect(reverse('index'))
+        return redirect(reverse('home'))
 
     if request.method == "POST":
         registration_form = UserRegistrationForm(request.POST)
@@ -55,7 +51,7 @@ def registration(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully registered")
-                return redirect(reverse('index'))
+                return redirect(reverse('profile'))
 
             else:
                 messages.error(request, "Unable to register your account at this time")
@@ -72,3 +68,21 @@ def user_profile(request):
     return render(request, "profile.html", {
         "profile": user
     })
+
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        edit_form = EditProfileForm(request.POST, instance=request.user)
+
+        if edit_form.is_valid():
+            edit_form.save()
+            messages.success(request, "You have successfully updated your details!")
+            return redirect(reverse('profile'))
+
+    else:
+        edit_form = EditProfileForm(instance=request.user)
+        args = {'edit_form': edit_form}
+        return render(request, "edit_profile.html", args)
+
+            
+

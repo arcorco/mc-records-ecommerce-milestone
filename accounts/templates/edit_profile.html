@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+{% block page_title %}Edit Details{% endblock %}
+
+{% block content %}
+
+<div class="row container">
+    <div class="col s6">
+        <h4>Personal Details</h4>
+        <form method="POST">
+            {% csrf_token %}
+            {{ edit_form | as_bootstrap }}
+            <button type="submit" class="btn waves-effect waves-light">Update details</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

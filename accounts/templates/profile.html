@@ -2,8 +2,21 @@
 
 {% block page_title %}{{ user }}'s Profile{% endblock %}
 
-{% block page_heading %}{{ user }}'s Profile{% endblock %}
-
 {% block content %}
-<p>{{ profile.email }}</p>
+<div class="row">
+    <h1>{{ profile.first_name }}'s Profile</h1>
+</div>
+
+<div class="row container">
+    <div class="col s6">
+        <h4>Personal Details</h4>
+            <h5>Name</h5>
+            <p>{{ profile.first_name }} {{ profile.last_name }}</p>
+            <h5>Email</h5>
+            <p>{{ profile.email }}</p>
+            <a href="{% url 'edit_profile' %}" class="waves-effect waves-light btn">Change Details</a>
+<br>    
+            <a href="{% url 'password_reset' %}" class="waves-effect waves-light btn">Reset Password</a>
+    </div>
+</div>
 {% endblock %}
