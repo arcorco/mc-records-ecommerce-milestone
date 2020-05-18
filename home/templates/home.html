@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="row">
-<h3 class="center">Hot New Music</h3>
+    <h3 class="center">Hot New Music</h3>
 </div>
 <div class="row center-align">
     {% for item in recently_released %}
@@ -16,20 +16,29 @@
     </div>
     {% endfor %}
 </div>
+<div class="divider"></div>
 <div class="row center">
     <h3>Artist Spotlight</h3>
 </div>
 <div class="row center-align container">
-    {% for item in products %}
-    {% if item.artist == "David Bowie" %}
-        <div class="product">
-            {% cloudinary item.cover width=450 height=450 %}
-        </div>
-        <h4>{{ item.artist }}</h4>
+    <div class="slider">
+        <ul class="slides">
+            {% for item in products %}
+            {% if item.artist == "David Bowie" %}
+            <li>
+                <div class="product">
+                    {% cloudinary item.cover width=450 height=450 %}
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
     </div>
-    {% endif %}
-    {% endfor %}
 </div>
+<div class="row center">
+    <h4>David Bowie</h4>
+</div>
+<div class="divider"></div>
 <div class="row center-align container">
     <h3>Explore the decades...</h3>
 </div>
@@ -49,4 +58,3 @@
 </div>
 
 {% endblock %}
-

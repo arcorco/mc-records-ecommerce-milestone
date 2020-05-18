@@ -1,3 +1,7 @@
+.nav-middle {
+    float: none !important;
+}
+
 .cart-badge-icon {
     display: inline !important;
 }
@@ -16,4 +20,9 @@
 .decades {
     height: 200px;
     width: 400px;
+}
+
+.slider {
+    width: 50%;
+    margin: auto;
 }
