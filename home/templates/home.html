@@ -7,36 +7,16 @@
     <h3 class="center">Hot New Music</h3>
 </div>
 <div class="row center-align">
-    {% for item in recently_released %}
-    <div class="col s4">
-        <div class="product">
-            {% cloudinary item.cover width=200 height=200 %}
+    {% for product in recently_released %}
+    <a href="{%  url 'product_detail' product.id %}">
+        <div class="col s4">
+            <div class="product">
+                {% cloudinary product.cover width=200 height=200 %}
+            </div>
+            <h4>{{ product.album }}</h4>
         </div>
-        <h4>{{ item.album }}</h4>
-    </div>
+    </a>
     {% endfor %}
-</div>
-<div class="divider"></div>
-<div class="row center">
-    <h3>Artist Spotlight</h3>
-</div>
-<div class="row center-align container">
-    <div class="slider">
-        <ul class="slides">
-            {% for item in products %}
-            {% if item.artist == "David Bowie" %}
-            <li>
-                <div class="product">
-                    {% cloudinary item.cover width=450 height=450 %}
-                </div>
-            </li>
-            {% endif %}
-            {% endfor %}
-        </ul>
-    </div>
-</div>
-<div class="row center">
-    <h4>David Bowie</h4>
 </div>
 <div class="divider"></div>
 <div class="row center-align container">
@@ -55,6 +35,30 @@
     <div class="col s6">
         <img class="decades" src="{% static 'images/00s.png' %}" alt="00s">
     </div>
+</div>
+<div class="divider"></div>
+<div class="row center">
+    <h3>Artist Spotlight</h3>
+</div>
+<div class="row center-align container">
+    <div class="slider">
+        <ul class="slides">
+            {% for product in products %}
+            {% if product.artist == "David Bowie" %}
+            <li>
+                <div class="product">
+                    <a href="{%  url 'product_detail' product.id %}">
+                    {% cloudinary product.cover width=450 height=450 %}
+                </a>
+                </div>
+            </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="row center">
+    <h4>David Bowie</h4>
 </div>
 
 {% endblock %}
