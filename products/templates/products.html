@@ -1,36 +1,74 @@
 {%  extends 'base.html' %}
 {% load cloudinary %}
+{% load materializecss %}
+<link href="nouislider.css" rel="stylesheet">
 {% block content %}
-<div class="container">
   <div class="row">
-    {% for product in products %}
-    <div class="col s4">
-      <div class="card">
-        <a href="{%  url 'product_detail' product.id %}">
-            <div class="product">
-              {% cloudinary product.cover width=250 height=250 %}
-            </div>
-          <div class="card-content">
-            <h5>{{ product.album }}</h3>
-            <h5>{{ product.artist }}</h4>
-        </a>
-        <p>{{ product.price }}</p>
+    <div class="col s3">
+      <h4>Filter by...</h4>
+      <form method="GET">
+        <div class="input-field">
+          <select name="artist" id="artist">
+            <option value="" disabled selected>Choose your artist</option>
+            {% for artist in artist_list %}
+            <option value="{{ artist }}">{{ artist }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="input-field">
+          <select name="genre" id="genre">
+            <option value="" disabled selected>Choose your genre</option>
+            {% for genre in genres %}
+            <option value="{{ genre.0 }}">{{ genre.1 }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="input-field">
+          <select name="decade" id="decade">
+            <option value="" disabled selected>Choose your decade</option>
+            {% for decade in decades %}
+            <option value="{{ decade }}">{{ decade }}</option>
+            {% endfor %}
+          </select>
+        </div>
 
-        <form action="{% url 'add_to_cart' product.id %}" method="POST">
-          {% csrf_token %}
-          <div class="input-group">
-            <input type="number" min="1" max="25" name="quantity" class="form-control" placeholder="Quantity">
-            <span class="input-group-btn">
-              <button class="btn waves-effect waves-light" type="submit">Add</button>
-            </span>
-          </div>
-        </form>
+        <div class="input-field">
+          <div class="" id="slider"></div>
+        </div>
+
+        <button type=submit>Search</button>
+      </form>
+    </div>
+    <div class="col s9">
+      {% for product in products %}
+      <div class="col s4">
+        <div class="card">
+          <a href="{%  url 'product_detail' product.id %}">
+            <div class="product center">
+              {% cloudinary product.cover width=210 height=210 %}
+            </div>
+            <div class="card-content">
+              <h5>{{ product.album }}</h3>
+                <h5>{{ product.artist }}</h4>
+          </a>
+          <p>{{ product.price }}</p>
+
+          <form action="{% url 'add_to_cart' product.id %}" method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+              <input type="number" min="1" max="25" name="quantity" class="form-control" placeholder="Quantity">
+              <span class="input-group-btn">
+                <button class="btn waves-effect waves-light" type="submit">Add</button>
+              </span>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
+    {% endfor %}
   </div>
-  {% endfor %}
 </div>
-</div>
+
 
 {% if products.has_other_pages %}
 <ul class="pagination">
@@ -53,5 +91,4 @@
   {% endif %}
 </ul>
 {% endif %}
-
 {% endblock %}

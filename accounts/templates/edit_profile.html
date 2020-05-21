@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load bootstrap_tags %}
+{% load materializecss %}
 {% block page_title %}Edit Details{% endblock %}
 
 {% block content %}
@@ -9,7 +9,7 @@
         <h4>Personal Details</h4>
         <form method="POST">
             {% csrf_token %}
-            {{ edit_form | as_bootstrap }}
+            {{ edit_form | materializecss }}
             <button type="submit" class="btn waves-effect waves-light">Update details</button>
         </form>
         <a href="{% url 'profile' %}">Cancel</a>

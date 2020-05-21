@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'mathfilters',
     'home',
     'whitenoise',
+    'materializecssform',
 ]
 
 MIDDLEWARE = [
