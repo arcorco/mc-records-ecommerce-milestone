@@ -1,5 +1,6 @@
-{% extends base.html %}
+{% extends 'base.html' %}
 {% load static %}
+{% load cloudinary %}
 {% load materializecss %}
 {% load mathfilters %}
 
@@ -7,23 +8,23 @@
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
     //<![CDATA[
-        Stripe.publishableKey = '{{ publishable }}';
+    Stripe.publishableKey = '{{ publishable }}';
     //]]>
 </script>
-<script type="text/javascript" src="{% static 'js/stripe.js' }"></script>
+<script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
 {% endblock %}
 
 {% block content %}
 
-<div class="container">
+<div class="container"> 
     {% for item in cart_items %}
     <div class="row">
         <div class="col s3">
-            {% cloudinary item.product.cover width=200 height=200 %}
+            {% cloudinary item.product.cover width=100 height=100 %}
         </div>
         <div class="col s4">
-            <h4>{{ item.product.album }}</h4>
-            <h5>{{ item.product.artist }}</h5>
+            <p>{{ item.product.album }}</p>
+            <p>{{ item.product.artist }}</p>
             <p>£{{ item.product.price }}</p>
         </div>
         <div class="col s3">
@@ -42,7 +43,7 @@
             </p>
         </div>
         <div class="col s2 right-align">
-            <h5>Subtotal:</h5>
+            <p>Subtotal:</p>
             <p>£{{ item.quantity|mul:item.product.price }}</p>
         </div>
     </div>
@@ -50,8 +51,28 @@
     <div class="row right-align">
         <p>Total:</p>
         <p>£{{ total }}</p>
-        <a href="/" class="btn waves-effect waves-light" role="button">Continue to checkout</a>
     </div>
+<div class="row">
+    <form role="form" method="POST" id="payment_form" action="{% url 'checkout' %}">
+        <div id="credit-card-errors" style="display: none;">
+            <div class="alert-message block-message error" id="stripe-error-message"></div>
+        </div>
+        <div class="col s6">
+        <div class="form-group">
+            {{ order_form | materializecss }}
+        </div>
+    </div>
+    <div class="col s6">
+        <div class="form-group">
+            {{ payment_form | materializecss }}
+        </div>
+    </div>
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="submit" id="submit_payment_btn" name="commit" value="Submit Payment">
+        </div>
+    </form>
+</div>
 </div>
 
 {% endblock %}
