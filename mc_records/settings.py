@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'home',
     'whitenoise',
     'materializecssform',
+    'checkout',
 ]
 
 MIDDLEWARE = [
@@ -153,3 +154,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+STRIPE_PUBLISHABLE = os.environ.get("STRIPE_PUBLISHABLE")
+STRIPE_SECRET = os.environ.get("STRIPE_SECRET")
