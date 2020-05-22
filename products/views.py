@@ -12,7 +12,7 @@ def all_products(request):
     product_list = Product.objects.all()
     artist_list = Product.objects.values_list('artist', flat=True).distinct()
     artist = request.GET.getlist('artist')
-    genre = request.GET.get('genre')
+    genre = request.GET.getlist('genre')
     decade = request.GET.get('decade')
     price_min = request.GET.get('price_min')
     price_max = request.GET.get('price_max')
@@ -22,7 +22,7 @@ def all_products(request):
         product_list = product_list.filter(artist__in=artist)
 
     if is_valid_queryparam(genre):
-        product_list = product_list.filter(genre=genre)
+        product_list = product_list.filter(genre__in=genre)
 
     if is_valid_queryparam(decade):
         product_list = product_list.filter(
