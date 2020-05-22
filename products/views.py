@@ -16,7 +16,15 @@ def all_products(request):
     decade = request.GET.get('decade')
     price_min = request.GET.get('price_min')
     price_max = request.GET.get('price_max')
-    print(artist)
+    sort = request.GET.get('sort')
+
+    if is_valid_queryparam(sort):
+        if sort == "recent":
+            product_list = product_list.order_by('-id')
+        if sort == "lowhigh":
+            product_list = product_list.order_by('price')
+        if sort == "highlow":
+            product_list = product_list.order_by('-price')
 
     if is_valid_queryparam(artist):
         product_list = product_list.filter(artist__in=artist)
