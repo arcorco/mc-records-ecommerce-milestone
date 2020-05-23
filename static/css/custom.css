@@ -1,3 +1,8 @@
+body {
+    background-color: #eceff1;
+    font-family: 'BenchNine', sans-serif;
+}
+
 /*--------------------------------------------------Nav bar-------------*/
 .nav-middle {
     float: none !important;
@@ -18,11 +23,25 @@
     z-index: 1;
 }
 
+.nav-text {
+    font-size: 40px !important;
+    color: black !important;
+}
+
+.heading-font {
+    font-family: 'Bebas Neue', sans-serif;
+    background-color: #448aff;
+    color: white;
+    padding: 5px;
+}
+
 /*--------------------------------------------------Home page-------------*/
 
 .decades {
     height: 200px;
-    width: 400px;
+    width: 350px;
+    border: solid black 5px;
+    margin-top: 10px;
 }
 
 .slider {
@@ -30,8 +49,30 @@
     margin: auto;
 }
 
+.decade-container {
+    background-color: #546e7a;
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+.recently-released {
+    background-color: #e3f2fd;
+    width: 250px;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(84,110,122,0.5);
+-moz-box-shadow: 10px 10px 5px 0px rgba(84,110,122,0.5);
+box-shadow: 10px 10px 5px 0px rgba(84,110,122,0.5);
+}
+
+.recently-released-container {
+    padding-top: 10px;
+    padding-bottom: 60px;
+}
+
 /*--------------------------------------------------Products page-------------*/
 
 .card {
-    height: 600px;
+    height: 500px;
 }

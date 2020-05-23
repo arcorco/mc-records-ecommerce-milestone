@@ -1,1 +1,1 @@
-web: gunicorn mc_records.wsgi:app
+web: gunicorn mc_records.wsgi:application
