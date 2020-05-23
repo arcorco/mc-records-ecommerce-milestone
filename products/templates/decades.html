@@ -1,0 +1,102 @@
+{%  extends 'base.html' %}
+{% load cloudinary %}
+{% load materializecss %}
+{% block content %}
+
+<div class="row">
+  <div class="col s3">
+    <form method="GET">
+      <div class="sort-div">
+        <h4>Sort by...</h4>
+        <div class="input-field">
+          <select id="sort" name="sort">
+            <option value="" disabled selected>Sort by</option>
+            <option value="recent">Recently added</option>
+            <option value="lowhigh">Price: lowest to highest</option>
+            <option value="highlow">Price: highest to lowest</option>
+          </select>
+        </div>
+      </div>
+      <div class="filter-div">
+        <h4>Filter by...</h4>
+        <div class="input-field">
+          <select multiple name="artist" id="artist">
+            <option value="" disabled selected>Choose your artist</option>
+            {% for artist in artist_list %}
+            <option name="artist{{ forloop.counter0 }}" value="{{ artist }}">{{ artist }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="input-field">
+          <select multiple name="genre" id="genre">
+            <option value="" disabled selected>Choose your genre</option>
+            {% for genre in genres %}
+            <option value="{{ genre.0 }}">{{ genre.1 }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="input-field">
+          <h6>Price range</h6>
+          <div class="" id="slider" name="price"></div>
+          <input id="price_min" name="price_min" type="hidden" value=""></input>
+          <input id="price_max" name="price_max" type="hidden" value=""></input>
+        </div>
+      </div>
+
+      <button id="filter-button" type=submit>Sort and Filter</button>
+    </form>
+  </div>
+  <div class="col s9">
+    {% for product in products %}
+    <div class="col s4">
+      <div class="card">
+        <a href="{%  url 'product_detail' product.id %}">
+          <div class="product center">
+            {% cloudinary product.cover width=210 height=210 %}
+          </div>
+          <div class="card-content">
+            <h5>{{ product.album }}</h3>
+              <h5>{{ product.artist }}</h4>
+        </a>
+        <p>{{ product.price }}</p>
+
+        <form action="{% url 'add_to_cart' product.id %}" method="POST">
+          {% csrf_token %}
+          <div class="input-group">
+            <input type="number" min="1" max="25" name="quantity" class="form-control" placeholder="Quantity">
+            <span class="input-group-btn">
+              <button class="btn waves-effect waves-light" type="submit">Add</button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+
+
+{% if products.has_other_pages %}
+<ul class="pagination">
+  {% if products.has_previous %}
+  <li><a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
+  {% else %}
+  <li class="disabled"><span>&laquo;</span></li>
+  {% endif %}
+  {% for i in products.paginator.page_range %}
+  {% if products.number == i %}
+  <li class="active"><span>{{ i }}</span></li>
+  {% else %}
+  <li><a href="?page={{ i }}">{{ i }}</a></li>
+  {% endif %}
+  {% endfor %}
+  {% if products.has_next %}
+  <li><a href="?page={{ products.next_page_number }}">&raquo;</a></li>
+  {% else %}
+  <li class="disabled"><span>&raquo;</span></li>
+  {% endif %}
+</ul>
+{% endif %}
+{% endblock %}

@@ -24,16 +24,24 @@
 </div>
 <div class="row container">
     <div class="col s6">
-        <img class="decades" src="{% static 'images/70s.jpg' %}" alt="70s">
+        <a href="{% url 'product_decades' decade=1970 %}">
+            <img class="decades" src="{% static 'images/70s.jpg' %}" alt="70s">
+        </a>
     </div>
     <div class="col s6">
+        <a href="{% url 'product_decades' decade=1980 %}">
         <img class="decades" src="{% static 'images/80s.jpg' %}" alt="80s">
+    </a>
     </div>
     <div class="col s6">
+        <a href="{% url 'product_decades' decade=1990 %}">
         <img class="decades" src="{% static 'images/90s.jpg' %}" alt="90s">
+    </a>
     </div>
     <div class="col s6">
+        <a href="{% url 'product_decades' decade=2000 %}">
         <img class="decades" src="{% static 'images/00s.png' %}" alt="00s">
+    </a>
     </div>
 </div>
 <div class="divider"></div>
@@ -48,12 +56,12 @@
             <li>
                 <div class="product">
                     <a href="{%  url 'product_detail' product.id %}">
-                    {% cloudinary product.cover width=450 height=450 %}
-                </a>
+                        {% cloudinary product.cover width=450 height=450 %}
+                    </a>
                 </div>
             </li>
             {% endif %}
-        {% endfor %}
+            {% endfor %}
         </ul>
     </div>
 </div>
