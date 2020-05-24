@@ -1,10 +1,10 @@
 $(function() {
-    $("#payment-form").submit(function() {
+    $("#payment_form").submit(function() {
         var form = this;
         var card = {
             number: $("#id_credit_card_number").val(),
-            expMonth: $("#id_expiry_month").val(),
-            expYear: $("#id_expiry_year").val(),
+            exp_month: $("#id_expiry_month").val(),
+            exp_year: $("#id_expiry_year").val(),
             cvc: $("id_cvv").val()
         };
 
@@ -21,7 +21,7 @@ $(function() {
 
             form.submit();
         } else {
-            $("#stripe-error-message").text(respone.error.message);
+            $("#stripe-error-message").text(response.error.message);
             $("#credit-card-errors").show();
             $("#validate_card_btn").attr("disabled", false);
         }
