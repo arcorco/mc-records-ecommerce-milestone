@@ -14,4 +14,4 @@ class MakePaymentForm(forms.Form):
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = {'first_name', 'last_name', 'phone_number', 'country', 'postcode', 'town_or_city', 'street_address', 'county'}
+        fields = {'full_name', 'phone_number', 'country', 'postcode', 'town_or_city', 'street_address', 'county'}

@@ -4,8 +4,7 @@ from products.models import Product
 # Create your models here.
 
 class Order(models.Model):
-    first_name = models.CharField(max_length=50, blank=False)
-    last_name = models.CharField(max_length=50, blank=False)
+    full_name = models.CharField(max_length=100, blank=False, default='')
     phone_number = models.CharField(max_length=20, blank=False)
     country = models.CharField(max_length=40, blank=False)
     postcode = models.CharField(max_length=20, blank=True)
@@ -15,7 +14,7 @@ class Order(models.Model):
     date = models.DateField()
 
     def __str__(self):
-        return "{0}-{1}-{2}, {3}".format(self.id, self.date, self.last_name, self.first_name)
+        return "{0}-{1}-{2}, {3}".format(self.id, self.date, self.full_name)
 
 class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, null=False)
