@@ -8,7 +8,7 @@ body {
 }
 
 a {
-    color: black !important;
+    color: black;
 }
 
 /*--------------------------------------------------Nav bar-------------*/
@@ -158,4 +158,24 @@ tr:hover {
 
 .tr-head:hover {
     background-color: #eceff1 !important;
+}
+
+/*--------------------------------------------------Product details page-------------*/
+
+.footer {
+    background-color: black;
+    color: white;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+}
+
+.fa {
+    font-size: 25px;
+    padding-left: 10px;
+    transition: 0.3s;
+    color: white;
+}
+
+.fa:hover {
+    color: #448aff;
 }

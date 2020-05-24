@@ -9,7 +9,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=BenchNine&family=Bebas+Neue&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=BenchNine&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}"> 
     <link href="{% static 'css/nouislider.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 
@@ -33,7 +34,7 @@
             </div>
             <div class="col sm-4 right">
                 <a href="{% url 'view_cart' %}">
-                    <i class="material-icons cart-badge-icon">shopping_cart</i>
+                    <i class="material-icons cart-badge-icon nav-text">shopping_cart</i>
                     {% if product_count > 0 %}
                     <span class="new badge right cart-badge-icon circle-badge pulse" data-badge-caption="">
                         {{ product_count }}
@@ -71,8 +72,27 @@
     </div>
     {% endif %}
     {% block content %}{% endblock %}
-    <footer>
+    <footer class="footer">
         <a style="display: none;" href="https://www.vecteezy.com/free-vector/gradients">Gradients Vectors by Vecteezy</a>
+        <div class="row container footer">
+            <div class="col s4">
+                <a style="color: white;" href="{% url 'products' %}"><h5>Shop now</h5></a>
+            </div>
+            <div class="col s4">
+                <h5>Contact us</h5>
+                <p>01632 960253</p>
+                <p>mcrecords-customerservice@gmail.com</p>
+            </div>
+            <div class="col s4">
+                <h5>Follow us</h5>
+                <a href="https://en-gb.facebook.com/" target="blank"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/explore" target="blank"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.instagram.com/" target="blank"><i class="fa fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="row container footer">
+            <h6><i class="material-icons tiny">copyright</i> 2020 MC Records. All rights reserved.</h6>
+        </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
