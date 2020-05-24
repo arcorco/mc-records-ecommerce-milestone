@@ -21,7 +21,7 @@
         <h4>Filter by...</h4>
         <div class="input-field">
           <select multiple name="artist" id="artist">
-            <option value="" disabled selected>Choose your artist</option>
+            <option value="" disabled selected>Artist</option>
             {% for artist in artist_list %}
             <option name="artist{{ forloop.counter0 }}" value="{{ artist }}">{{ artist }}</option>
             {% endfor %}
@@ -29,7 +29,7 @@
         </div>
         <div class="input-field">
           <select multiple name="genre" id="genre">
-            <option value="" disabled selected>Choose your genre</option>
+            <option value="" disabled selected>Genre</option>
             {% for genre in genres %}
             <option value="{{ genre.0 }}">{{ genre.1 }}</option>
             {% endfor %}
@@ -37,7 +37,7 @@
         </div>
         <div class="input-field">
           <select name="decade" id="decade">
-            <option value="" disabled selected>Choose your decade</option>
+            <option value="" disabled selected>Decade</option>
             {% for decade in decades %}
             <option value="{{ decade }}">{{ decade }}</option>
             {% endfor %}
@@ -45,14 +45,14 @@
         </div>
 
         <div class="input-field">
-          <h6>Price range</h6>
+          <h5>Price range</h5>
           <div class="" id="slider" name="price"></div>
           <input id="price_min" name="price_min" type="hidden" value=""></input>
           <input id="price_max" name="price_max" type="hidden" value=""></input>
         </div>
       </div>
 
-      <button id="filter-button" type=submit>Sort and Filter</button>
+      <button class="btn waves-effect waves-light" id="filter-button" type=submit>Sort and Filter</button>
     </form>
   </div>
   <div class="col s9">

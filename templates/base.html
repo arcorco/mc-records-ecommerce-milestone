@@ -19,9 +19,9 @@
 </head>
 
 <body>
-    <nav class="nav-extended blue accent-2">
+    <nav class="nav-extended black">
         <div class="nav-wrapper row">
-            <a href="{% url 'home' %}" class="brand-logo center heading-font">MC Records</a>
+            <a href="{% url 'home' %}" class="brand-logo center logo">MC Records</a>
             <div class="col sm-4">
                 <form method="GET" action="{% url 'search' %}">
                     <div class="input-field">
@@ -45,18 +45,18 @@
         <div class="nav-content row">
             <div class="col nav-middle brand-logo center">
                 <ul class="navbar nav">
-                    <li class="nav-item nav-text"><a href="{% url 'home' %}">Home</a></li>
-                    <li class="nav-item nav-text"><a href="{% url 'products' %}">Shop Now</a></li>
+                    <li class="nav-item"><a href="{% url 'home' %}" class="nav-text">Home</a></li>
+                    <li class="nav-item"><a href="{% url 'products' %}" class="nav-text">Shop Now</a></li>
                 </ul>
             </div>
             <div class="col right">
                 <ul class="navbar nav">
                     {% if user.is_authenticated %}
-                    <li class="nav-item nav-text"><a href="{% url 'profile' %}">My Account</a></li>
-                    <li class="nav-item nav-text"><a href="{% url 'logout' %}">Logout</a></li>
+                    <li class="nav-item"><a href="{% url 'profile' %}" class="nav-text">My Account</a></li>
+                    <li class="nav-item"><a href="{% url 'logout' %}" class="nav-text">Logout</a></li>
                     {% else %}
-                    <li class="nav-item nav-text"><a href="{% url 'login' %}">Login</a></li>
-                    <li class="nav-item nav-text"><a href="{% url 'registration' %}">Register</a></li>
+                    <li class="nav-item"><a href="{% url 'login' %}" class="nav-text">Login</a></li>
+                    <li class="nav-item"><a href="{% url 'registration' %}" class="nav-text">Register</a></li>
                     {% endif %}
                 </ul>
             </div>

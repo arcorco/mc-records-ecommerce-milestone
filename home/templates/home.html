@@ -3,8 +3,8 @@
 {% load cloudinary %}
 
 {% block content %}
-<div class="recently-released-container container">
-<div class="row">
+<div class="recently-released-container">
+<div class="row container">
     <h3 class="center"><span class="heading-font">Hot New Music</span></h3>
 </div>
 <div class="row center-align">
@@ -13,9 +13,9 @@
         <div class="col s4 center-align">
             <div class="recently-released center-align">
             <div class="product">
-                {% cloudinary product.cover width=200 height=200 %}
+                {% cloudinary product.cover width=280 height=280 %}
             </div>
-            <h4>{{ product.album }}</h4>
+            <span class="badge new recently-released-badge" data-badge-caption="">Tell me more</span>
         </div>
         </div>
     </a>
@@ -24,7 +24,7 @@
 </div>
 <div class="decade-container">
 <div class="row center-align container">
-    <h3><span class="heading-font">Explore the decades...</span></h3>
+    <h3><span class="heading-font decades-header">Explore the decades...</span></h3>
 </div>
 <div class="row container center">
     <div class="col s6">

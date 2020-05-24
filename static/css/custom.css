@@ -3,6 +3,14 @@ body {
     font-family: 'BenchNine', sans-serif;
 }
 
+.btn {
+    background-color: #448aff !important;
+}
+
+a {
+    color: black !important;
+}
+
 /*--------------------------------------------------Nav bar-------------*/
 .nav-middle {
     float: none !important;
@@ -10,6 +18,13 @@ body {
 
 .cart-badge-icon {
     display: inline !important;
+}
+
+.logo {
+    color: #448aff !important;
+    font-size: 70px !important;
+    font-weight: 600;
+    padding-top: 10px !important;
 }
 
 .circle-badge {
@@ -21,17 +36,18 @@ body {
     margin-top: 7px;
     margin-left: -7px !important;
     z-index: 1;
+    background-color: #448aff !important;
 }
 
 .nav-text {
-    font-size: 40px !important;
-    color: black !important;
+    font-size: 20px !important;
+    color: white !important;
 }
 
 .heading-font {
     font-family: 'Bebas Neue', sans-serif;
-    background-color: #448aff;
-    color: white;
+    color: #2962ff;
+    font-size: 60px;
     padding: 5px;
 }
 
@@ -42,6 +58,20 @@ body {
     width: 350px;
     border: solid black 5px;
     margin-top: 10px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0,0.5);
+box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+}
+
+.decades-header {
+    color: white;
+}
+
+.decades:hover {
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.8);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0,0.8);
+box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.8);
 }
 
 .slider {
@@ -53,17 +83,31 @@ body {
     background-color: #546e7a;
     padding-top: 40px;
     padding-bottom: 50px;
+    
 }
 
 .recently-released {
-    background-color: #e3f2fd;
-    width: 250px;
     margin: auto;
     padding-top: 20px;
     padding-bottom: 10px;
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(84,110,122,0.5);
--moz-box-shadow: 10px 10px 5px 0px rgba(84,110,122,0.5);
-box-shadow: 10px 10px 5px 0px rgba(84,110,122,0.5);
+}
+
+.recently-released-badge {
+    position: relative;
+    margin-top: -40px;
+    margin-right: 20px;
+    padding-top: 1px !important;
+    font-size: 18px !important;
+    height: 25px !important;
+    background-color: white !important;
+    border: solid #448aff 2px;
+    color: #448aff !important;
+    transition: 0.2s;
+}
+
+.recently-released-badge:hover {
+    background-color:#448aff !important;
+    color: white !important;
 }
 
 .recently-released-container {
@@ -71,8 +115,47 @@ box-shadow: 10px 10px 5px 0px rgba(84,110,122,0.5);
     padding-bottom: 60px;
 }
 
+.indicator-item.active {
+    background-color: #448aff !important;
+}
+
 /*--------------------------------------------------Products page-------------*/
 
 .card {
     height: 500px;
+}
+
+.noUi-connect {
+    background: #448aff;
+}
+.noUi-horizontal .noUi-handle, .noUi-vertical .noUi-handle {
+    background: #448aff;
+}
+.noUi-target.noUi-horizontal .noUi-tooltip {
+    background-color: #448aff;
+}
+
+/*--------------------------------------------------Product details page-------------*/
+.product-container {
+    padding-top: 20px;
+}
+
+.track-container {
+    padding-top: 20px;
+}
+
+.more-music-container {
+    padding-top: 20px;
+}
+
+tr {
+    font-size: 16px;
+}
+
+tr:hover {
+    background-color: rgba(68, 138, 255, 0.25);
+}
+
+.tr-head:hover {
+    background-color: #eceff1 !important;
 }
