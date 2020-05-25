@@ -11,9 +11,6 @@ $(document).ready(function () {
       'min': 0,
       'max': 20
     },
-    format: wNumb({
-      prefix: '£'
-    })
   });
 
   slider.noUiSlider.on('update', function (values, handle) {
