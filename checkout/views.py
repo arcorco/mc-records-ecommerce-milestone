@@ -21,6 +21,7 @@ def checkout(request):
 
         if order_form.is_valid() and payment_form.is_valid():
             order = order_form.save(commit=False)
+            order.purchased_by = request.user
             order.date = timezone.now()
             order.save()
 
@@ -60,4 +61,7 @@ def checkout(request):
         order_form = OrderForm()
     
     return render(request, "checkout.html", {"order_form": order_form, "payment_form": payment_form, "publishable":settings.STRIPE_PUBLISHABLE})
+
+def order(request):
+    return render(request, "order.html")
         
