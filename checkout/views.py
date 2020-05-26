@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.models import User
 from .forms import MakePaymentForm, OrderForm
 from .models import OrderLineItem
 from django.conf import settings
 from django.utils import timezone
 from products.models import Product
+from checkout.models import Order, OrderLineItem
 import stripe
 
 
@@ -62,6 +64,9 @@ def checkout(request):
     
     return render(request, "checkout.html", {"order_form": order_form, "payment_form": payment_form, "publishable":settings.STRIPE_PUBLISHABLE})
 
-def order(request):
-    return render(request, "order.html")
+def confirmation(request):
+    orders = Order.objects.all()
+    purchases = OrderLineItem.objects.all()
+    user = User.objects.get(email=request.user.email)
+    return render(request, "confirmation.html", {'orders': orders, "profile": user, "purchases": purchases})
         

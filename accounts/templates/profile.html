@@ -6,9 +6,12 @@
 <div class="row">
     <h1>{{ profile.first_name }}'s Profile</h1>
 </div>
-
 <div class="row container">
-    <div class="col s6">
+    <div class="col s3">
+        <a href="{% url 'profile' %}">My details</a>
+        <a href="{% url 'order' %}">My orders</a>
+    </div>
+    <div class="col s9">
         <h4>Personal Details</h4>
             <h5>Name</h5>
             <p>{{ profile.first_name }} {{ profile.last_name }}</p>

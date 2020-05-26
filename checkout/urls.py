@@ -1,7 +1,7 @@
 from django.conf.urls import url
-from .views import checkout, order
+from .views import checkout, confirmation
 
 urlpatterns = [
     url(r'^$', checkout, name="checkout"),
-    url(r'^order/', order, name="order")
+    url(r'^confirmation/', confirmation, name="confirmation")
 ]

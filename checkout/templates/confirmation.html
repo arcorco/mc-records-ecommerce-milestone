@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row container">
+    <div class="col s6">
+        <h4>{{ profile.first_name }}, thank you for your order!</h4>
+        {% for order in orders %}
+        {% if order.purchased_by == profile.username %}
+        <h1>{{ order.id }}</h1>
+        <h1>{{ order.date }}</h1>
+        <h1>Delivery address: {{ order.street_address }}, {{ order.town_or_city }}, {{ order.postcode }}</h1>
+        <h1>{{ order.order_line_item }}</h1>
+        {% for purchase in purchases %}
+        {% if purchase.order_id == order.id %}
+    
+        <h1>{{ purchase }}</h1>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+        
+
+    </div>
+    {% endblock %}
+</div>
