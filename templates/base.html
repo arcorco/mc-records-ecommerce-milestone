@@ -71,6 +71,7 @@
         </div>
     </nav>
 
+    <main>
     <div>
         {% for message in messages %}
         {{message}}
@@ -78,7 +79,8 @@
     </div>
    
     {% block content %}{% endblock %}
-    <footer class="footer">
+    </main>
+    <footer class="page-footer footer">
         <a style="display: none;" href="https://www.vecteezy.com/free-vector/gradients">Gradients Vectors by
             Vecteezy</a>
         <div class="row container footer">
