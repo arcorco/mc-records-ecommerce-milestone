@@ -11,6 +11,10 @@ body {
     padding-top: 20px;
   }
 
+input {
+    font-family: 'BenchNine', sans-serif !important;
+    font-size: 18px !important;
+}
 
 .btn {
     background-color: #448aff !important;
@@ -199,7 +203,7 @@ tr:hover {
     height: 100%;
 }
 
-/*--------------------------------------------------Cart page-------------*/
+/*--------------------------------------------------Profile pages-------------*/
 
 .current-page {
     font-size: 20px;
@@ -249,4 +253,19 @@ tr:hover {
 
 .order-product-row {
     margin-bottom: 0px;
+}
+
+.edit-detail-container {
+    background-color: white;
+    border: solid black 2px;
+    padding: 5px 30px 30px 30px;
+}
+
+.cancel {
+    display: block;
+    position: relative;
+    margin-top: 5px;
+    margin-left: -50px;
+    font-size: 16px !important;
+    text-decoration: underline;
 }

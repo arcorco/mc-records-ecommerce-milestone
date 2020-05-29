@@ -3,16 +3,32 @@
 {% block page_title %}Edit Details{% endblock %}
 
 {% block content %}
-
 <div class="row container">
+    <div class="col s2">
+        <a href="{% url 'profile' %}">
+            <h6 class="profile-nav">My details</h6>
+        </a>
+        </br>
+        <a href="{% url 'orders' %}">
+            <h6 class="profile-nav">My orders</h6>
+        </a>
+    </div>
     <div class="col s6">
-        <h4>Personal Details</h4>
-        <form method="POST">
-            {% csrf_token %}
-            {{ edit_form | materializecss }}
-            <button type="submit" class="btn waves-effect waves-light">Update details</button>
-        </form>
-        <a href="{% url 'profile' %}">Cancel</a>
+        <div class="edit-detail-container">
+            <h4>Update Personal Details</h4>
+            <form method="POST">
+                {% csrf_token %}
+                {{ edit_form | materializecss }}
+                <button type="submit" class="btn waves-effect waves-light">Update details</button>
+            </form>
+        </div>
+    </div>
+    <div class="col s1">
+        <span class="cancel left">
+            <a href="{% url 'profile' %}">
+                <i class="material-icons">cancel</i>
+            </a>
+        </span>
     </div>
 </div>
 {% endblock %}
