@@ -6,6 +6,7 @@ from .forms import MakePaymentForm, OrderForm
 from .models import OrderLineItem
 from django.conf import settings
 from django.utils import timezone
+from django.http import HttpResponse
 from products.models import Product
 from checkout.models import Order, OrderLineItem
 import stripe
@@ -64,9 +65,29 @@ def checkout(request):
     
     return render(request, "checkout.html", {"order_form": order_form, "payment_form": payment_form, "publishable":settings.STRIPE_PUBLISHABLE})
 
-def confirmation(request):
-    orders = Order.objects.all()
-    purchases = OrderLineItem.objects.all()
+@login_required()
+def confirmation(request, id):
+    order = Order.objects.get(id=id)
+    purchases = OrderLineItem.objects.filter(order_id=id)
     user = User.objects.get(email=request.user.email)
-    return render(request, "confirmation.html", {'orders': orders, "profile": user, "purchases": purchases})
+    if order.purchased_by != request.user.username:
+        response = HttpResponse()
+        response.status_code = 403
+        return response
+    totals = []
+    total = 0
+    for purchase in purchases:
+        if purchase.order_id == order.id:
+            total += purchase.product.price*purchase.quantity
+            totals.append((purchase.order_id, float(total)))
+            total=0
+    
+    order_total=[]
+    value=0
+    for t in totals:
+        value += t[1]
+    order_total.append((t[0], value))
+        
+    print(order, purchases, order_total)
+    return render(request, "confirmation.html", {'order': order, "profile": user, "purchases": purchases, "order_total": order_total})
         
