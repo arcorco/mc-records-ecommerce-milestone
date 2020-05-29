@@ -16,6 +16,10 @@ body {
     background-color: #448aff !important;
 }
 
+.btn:hover {
+    color: black;
+}
+
 a {
     color: black;
 }
@@ -193,4 +197,56 @@ tr:hover {
 
 .cart-container {
     height: 100%;
+}
+
+/*--------------------------------------------------Cart page-------------*/
+
+.current-page {
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+.profile-title {
+    margin-top: 0;
+}
+
+.profile-head {
+    text-transform: uppercase;
+}
+
+.profile-details {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.details {
+    font-size: 18px;
+}
+
+.reset-password-btn {
+    margin-left: 15px;
+}
+
+.detail-container {
+    background-color: white;
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+    padding-left: 30px;
+    width: 80% !important;
+    border: solid black 3px;
+}
+
+.order-container {
+    background-color: white;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    border: solid black 2px;
+}
+
+.order-product {
+    margin-top: 25px;
+}
+
+.order-product-row {
+    margin-bottom: 0px;
 }

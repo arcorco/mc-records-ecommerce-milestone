@@ -99,4 +99,23 @@ def orders(request):
     orders = Order.objects.all()
     purchases = OrderLineItem.objects.all()
     user = User.objects.get(email=request.user.email)
-    return render(request, "order.html", {'orders': orders, "profile": user, "purchases": purchases})
+    totals = []
+    total = 0
+    for order in orders:
+        for purchase in purchases:
+            if purchase.order_id == order.id:
+                total += purchase.product.price*purchase.quantity
+                totals.append((purchase.order_id, float(total)))
+                total=0
+    
+    order_totals_dict={}
+    for t in totals:
+        key=t[0]
+        values=t[1]
+        if key not in order_totals_dict:
+            order_totals_dict[key] = values
+        else:
+            order_totals_dict[key] += values
+    order_totals = order_totals_dict.items()
+
+    return render(request, "order.html", {'orders': orders, "profile": user, "purchases": purchases, "order_totals": order_totals})
