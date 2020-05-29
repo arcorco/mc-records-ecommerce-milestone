@@ -5,47 +5,58 @@
 {% block content %}
 <div class="row container">
     <h3>{{ profile.first_name }}'s Profile</h3>
-    <div class="right">
-        <a href="{% url 'profile' %}" class="profile-nav">My details</a>
-        <a href="{% url 'orders' %}" class="profile-nav">My orders</a>
+    <div class="col s2">
+        <a href="{% url 'profile' %}">
+            <h6 class="profile-nav">My details</h6>
+        </a>
+        </br>
+        <a href="{% url 'orders' %}">
+            <h6 class="current-page profile-nav">My orders</h6>
+        </a>
     </div>
-</div>
 
-{% for order in orders %}
-{% if order.purchased_by == profile.username %}
-<div class="divider"></div>
-<div class="row container">
-    <div class="col s3">
-        <h6>Order Number: {{ order.id }}</h6>
-        <h6>Order Date: {{ order.date }}</h6>
-        <h6>Delivery Address: {{ order.street_address }}, {{ order.town_or_city }}, {{ order.postcode }}</h6>
-    </div>
-    <div class="col s6 center">
-        {% for purchase in purchases %}
-        {% if purchase.order_id == order.id %}
+    <div class="col s10 order-container">
+        {% for order in orders %}
+        {% if order.purchased_by == profile.username %}
+        <div class="divider"></div>
         <div class="row">
-            <div class="col s6 left">
-                <div class="product">
-                    {% cloudinary purchase.product.cover width=75 height=75 %}
-                </div>
+            <div class="col s2">
+                <h6 class="order-product">Order Number: </br> {{ order.id }}</h6>
+                <h6 class="order-product">Order Date: </br> {{ order.date }}</h6>
+                
             </div>
-            <div class="col s6">
-                <h6>{{ purchase.product.album }} - {{ purchase.product.artist }}</h6>
-                <h6>Quantity: {{ purchase.quantity }}</h6>
+            <div class="col s3">
+                <h6 class="order-product">Delivery Address: </br> {{ order.street_address }}, {{ order.town_or_city }}, {{ order.postcode }}</h6>
+            </div>
+            <div class="col s5 center">
+                {% for purchase in purchases %}
+                {% if purchase.order_id == order.id %}
+                <div class="row order-product-row">
+                    <div class="col s6 left">
+                        <div class="product order-product">
+                            {% cloudinary purchase.product.cover width=75 height=75 %}
+                        </div>
+                    </div>
+                    <div class="col s6 right">
+                        <h6 class="order-product">{{ purchase.product.album }} - {{ purchase.product.artist }}</h6>
+                        <h6 class="order-product">Quantity: {{ purchase.quantity }}</h6>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col s2 right-align">
+                {% for order_total in order_totals %}
+                {% if order_total.0 == order.id %}
+                <h6 class="order-product">Total: £{{ order_total.1 }}</h6>
+                {% endif %}
+                {% endfor %}
+
             </div>
         </div>
-        {% endif %}
-        {% endfor %}
-    </div>
-    <div class="col s3 right-align">
-        {% for purchase in purchases %}
-        {% if purchase.order_id == order.id %}
-        <h6>Total: £{{ purchase.quantity|mul:purchase.product.price }}</h6>
+        <div class="divider"></div>
         {% endif %}
         {% endfor %}
     </div>
 </div>
-<div class="divider"></div>
-{% endif %}
-{% endfor %}
 {% endblock %}
