@@ -269,3 +269,25 @@ tr:hover {
     font-size: 16px !important;
     text-decoration: underline;
 }
+
+/*--------------------------------------------------Registration pages-------------*/
+.login-link {
+    display: inline-block;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 40px;
+    transition-duration: 0.3s;
+}
+
+.login-link:hover {
+    color: #448aff;
+}
+
+.password-heading-font {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 60px;
+}
+
+.password-reset-content {
+    padding-top: 15px;
+}
