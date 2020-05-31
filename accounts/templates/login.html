@@ -5,11 +5,14 @@
 {% block page_title %}Login Page{% endblock %}
 
 {% block content %}
+<div class="row container">
+    <h3 class="password-heading-font">Login</h3>
 <form method="POST">
     {% csrf_token %}
     {{ login_form | materializecss }}
-    <button type="submit" class="btn btn-default">Login</button>
+    <button type="submit" class="btn waves-effect waves-light login-btn">Login</button>
 </form>
 
-<p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+<h6>Can't remember your password? Reset is here: <a class="forgotten-password" href="{% url 'password_reset' %}">Reset Password</a></h6>
+</div>
 {% endblock %}

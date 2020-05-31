@@ -17,7 +17,7 @@
           </select>
         </div>
       </div>
-      <div class="filter-div">
+      <div class="filter-div filter-field">
         <h4>Filter by...</h4>
         <div class="input-field">
           <select multiple name="artist" id="artist">
@@ -35,8 +35,7 @@
             {% endfor %}
           </select>
         </div>
-
-        <div class="input-field">
+        <div class="input-field filter-field">
           <h6>Price range</h6>
           <div class="" id="slider" name="price"></div>
           <input id="price_min" name="price_min" type="hidden" value=""></input>
@@ -44,7 +43,7 @@
         </div>
       </div>
 
-      <button id="filter-button" type=submit>Sort and Filter</button>
+      <button class="btn waves-effect waves-light filter-button" id="filter-button" type=submit>Sort and Filter</button>
     </form>
   </div>
   <div class="col s9">
@@ -66,7 +65,8 @@
           <div class="input-group">
             <input type="number" min="1" max="25" name="quantity" class="form-control" placeholder="Quantity">
             <span class="input-group-btn">
-              <button class="btn waves-effect waves-light" type="submit">Add</button>
+              <button class="btn waves-effect waves-light" type="submit">Add
+              </button>
             </span>
           </div>
         </form>
