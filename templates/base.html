@@ -72,13 +72,16 @@
     </nav>
 
     <main>
-    <div>
         {% for message in messages %}
-        {{message}}
+        <div class="row" id="message-card">
+            <div class="col s12 m6">
+                <div class="card-panel message-card">
+                    <h6 class="card-title">{{message}}</h6>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-    </div>
-   
-    {% block content %}{% endblock %}
+        {% block content %}{% endblock %}
     </main>
     <footer class="page-footer footer">
         <a style="display: none;" href="https://www.vecteezy.com/free-vector/gradients">Gradients Vectors by
