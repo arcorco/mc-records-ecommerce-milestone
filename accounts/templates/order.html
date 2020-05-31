@@ -16,8 +16,14 @@
     </div>
 
     <div class="col s10 order-container">
+        {% if not orders %}
+        <div class="row">
+            <h5 class="no-orders">You haven't made any orders yet!</h5>
+            <h5 class="no-orders">Shop now <a href="{% url 'products' %}"><i class="material-icons shop-now">shopping_basket</i></a></h5>
+        </div>
+
+        {% else %}
         {% for order in orders %}
-        {% if order.purchased_by == profile.username %}
         <div class="divider"></div>
         <div class="row">
             <div class="col s2">
@@ -55,8 +61,8 @@
             </div>
         </div>
         <div class="divider"></div>
-        {% endif %}
         {% endfor %}
+        {% endif %}
     </div>
 </div>
 {% endblock %}

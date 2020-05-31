@@ -96,9 +96,9 @@ def edit_profile(request):
 
 
 def orders(request):
-    orders = Order.objects.all()
     purchases = OrderLineItem.objects.all()
     user = User.objects.get(email=request.user.email)
+    orders = Order.objects.filter(purchased_by=user.username)
     totals = []
     total = 0
     for order in orders:
@@ -117,5 +117,4 @@ def orders(request):
         else:
             order_totals_dict[key] += values
     order_totals = order_totals_dict.items()
-
     return render(request, "order.html", {'orders': orders, "profile": user, "purchases": purchases, "order_totals": order_totals})
