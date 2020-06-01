@@ -27,10 +27,10 @@
 </head>
 
 <body>
-    <nav class="nav-extended black">
+    <nav class="nav-extended black hide-on-small-only">
         <div class="nav-wrapper row">
             <a href="{% url 'home' %}" class="brand-logo center logo">MC Records</a>
-            <div class="col sm-4">
+            <div class="col s4">
                 <form method="GET" action="{% url 'search' %}">
                     <div class="input-field">
                         <input id="search" type="search" name="q" required>
@@ -39,7 +39,8 @@
                     </div>
                 </form>
             </div>
-            <div class="col sm-4 right">
+            <div class="col s2"></div>
+            <div class="col s6 right-align">
                 <a href="{% url 'view_cart' %}">
                     <i class="material-icons cart-badge-icon nav-text">shopping_cart</i>
                     {% if product_count > 0 %}
@@ -71,12 +72,55 @@
         </div>
     </nav>
 
+    <nav class="nav-extended black hide-on-med-and-up">
+        <div class="nav-wrapper row">
+            <a href="{% url 'home' %}" class="brand-logo center mobile-logo">MC Records</a>
+            <div class="col s6">
+                <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i
+                        class="material-icons mobilenav-icon">menu</i></a>
+            </div>
+            <div class="col s6 right-align">
+                <a href="{% url 'view_cart' %}">
+                    <i class="material-icons nav-text mobilenav-icon right-align">shopping_cart</i>
+                    {% if product_count > 0 %}
+                    <span class="new badge right cart-badge-icon circle-badge pulse" data-badge-caption="">
+                        {{ product_count }}
+                    </span>
+                    {% endif %}
+                </a>
+            </div>
+            <div class="col s12 mobile-search">
+            <form method="GET" action="{% url 'search' %}">
+                <div class="input-field">
+                    <input id="search" type="search" name="q" required>
+                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+            </form>
+        </div>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-nav">
+        <li class="mobile-navitem"><a href="{% url 'home' %}" class="nav-text">Home</a></li>
+        <li class="mobile-navitem"><a href="{% url 'products' %}" class="nav-text">Shop Now</a></li>
+        {% if user.is_authenticated %}
+        <li class="mobile-navitem"><a href="{% url 'profile' %}" class="nav-text">My Account</a></li>
+        <li><a href="{% url 'logout' %}" class="nav-text">Logout</a></li>
+        {% else %}
+        <li class="mobile-navitem"><a href="{% url 'login' %}" class="nav-text">Login</a></li>
+        <li class="mobile-navitem"><a href="{% url 'registration' %}" class="nav-text">Register</a></li>
+        {% endif %}
+    </ul>
+
+
     <main>
         {% for message in messages %}
         <div class="row" id="message-card">
             <div class="col s12 m6">
                 <div class="card-panel message-card">
-                    <h6 class="card-title">{{message}}</h6>
+                    <h6 class="card-title">{{message}}<button id="message-close"><i
+                                class="material-icons right">close</i></button></h6>
                 </div>
             </div>
         </div>
@@ -86,7 +130,7 @@
     <footer class="page-footer footer">
         <a style="display: none;" href="https://www.vecteezy.com/free-vector/gradients">Gradients Vectors by
             Vecteezy</a>
-        <div class="row container footer">
+        <div class="row container footer hide-on-small-only">
             <div class="col s4 left">
                 <a style="color: white;" href="{% url 'products' %}">
                     <h5>Shop now</h5>
@@ -98,6 +142,24 @@
                 <h6>mcrecords.customerservice@gmail.com</h6>
             </div>
             <div class="col s4 right-align">
+                <h5>Follow us</h5>
+                <a href="https://en-gb.facebook.com/" target="blank"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/explore" target="blank"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.instagram.com/" target="blank"><i class="fa fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="row container footer show-on-small-only">
+            <div class="col s12 center">
+                <a style="color: white;" href="{% url 'products' %}">
+                    <h5>Shop now</h5>
+                </a>
+            </div>
+            <div class="col s12 center">
+                <h5>Contact us</h5>
+                <h6>01632 960253</h6>
+                <h6>mcrecords.customerservice@gmail.com</h6>
+            </div>
+            <div class="col s12 center">
                 <h5>Follow us</h5>
                 <a href="https://en-gb.facebook.com/" target="blank"><i class="fa fa-facebook"></i></a>
                 <a href="https://twitter.com/explore" target="blank"><i class="fa fa-twitter"></i></a>

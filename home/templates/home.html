@@ -4,56 +4,70 @@
 
 {% block content %}
 <div class="recently-released-container">
-<div class="row container">
-    <h3 class="center"><span class="heading-font">Hot New Music</span></h3>
-</div>
-<div class="row center-align">
-    {% for product in recently_released %}
-    <a href="{%  url 'product_detail' product.id %}">
-        <div class="col s4 center-align">
+    <div class="row container">
+        <h3 class="center"><span class="heading-font">Hot New Music</span></h3>
+    </div>
+    <div class="row center-align hide-on-large-only">
+        {% for product in recently_released %}
+        <div class="col s12 m4">
             <div class="recently-released center-align">
-            <div class="product">
-                {% cloudinary product.cover width=280 height=280 %}
+                <a href="{%  url 'product_detail' product.id %}">
+                    <div class="product">
+                        {% cloudinary product.cover width=220 height=220 %}
+                    </div>
+                    <span class="badge new recently-released-badge" data-badge-caption="">Tell me more</span>
+                </a>
             </div>
-            <span class="badge new recently-released-badge" data-badge-caption="">Tell me more</span>
         </div>
+        {% endfor %}
+    </div>
+    <div class="row center-align hide-on-med-and-down">
+        {% for product in recently_released %}
+        <div class="col s12 m4">
+            <div class="recently-released">
+                <a href="{%  url 'product_detail' product.id %}">
+                    <div class="product">
+                        {% cloudinary product.cover width=340 height=340 %}
+                    </div>
+                    <span class="badge new recently-released-badge" data-badge-caption="">Tell me more</span>
+                </a>
+            </div>
         </div>
-    </a>
-    {% endfor %}
-</div>
+        {% endfor %}
+    </div>
 </div>
 <div class="decade-container">
-<div class="row center-align container">
-    <h3><span class="heading-font decades-header">Explore the decades...</span></h3>
-</div>
-<div class="row container center">
-    <div class="col s6">
-        <a href="{% url 'product_decades' decade=1970 %}">
-            <img class="decades" src="{% static 'images/70s.jpg' %}" alt="70s">
-        </a>
+    <div class="row center-align container">
+        <h3><span class="heading-font decades-header">Explore the decades...</span></h3>
     </div>
-    <div class="col s6">
-        <a href="{% url 'product_decades' decade=1980 %}">
-        <img class="decades" src="{% static 'images/80s.jpg' %}" alt="80s">
-    </a>
+    <div class="row center container">
+        <div class="col s6">
+            <a href="{% url 'product_decades' decade=1970 %}">
+                <img class="decades" src="{% static 'images/70s.jpg' %}" alt="70s">
+            </a>
+        </div>
+        <div class="col s6">
+            <a href="{% url 'product_decades' decade=1980 %}">
+                <img class="decades" src="{% static 'images/80s.jpg' %}" alt="80s">
+            </a>
+        </div>
+        <div class="col s6">
+            <a href="{% url 'product_decades' decade=1990 %}">
+                <img class="decades" src="{% static 'images/90s.jpg' %}" alt="90s">
+            </a>
+        </div>
+        <div class="col s6">
+            <a href="{% url 'product_decades' decade=2000 %}">
+                <img class="decades" src="{% static 'images/00s.png' %}" alt="00s">
+            </a>
+        </div>
     </div>
-    <div class="col s6">
-        <a href="{% url 'product_decades' decade=1990 %}">
-        <img class="decades" src="{% static 'images/90s.jpg' %}" alt="90s">
-    </a>
-    </div>
-    <div class="col s6">
-        <a href="{% url 'product_decades' decade=2000 %}">
-        <img class="decades" src="{% static 'images/00s.png' %}" alt="00s">
-    </a>
-    </div>
-</div>
 </div>
 <div class="row center">
     <h3><span class="heading-font">Artist Spotlight</span></h3>
 </div>
 <div class="row center-align container">
-    <div class="slider">
+    <div class="slider spotlight">
         <ul class="slides">
             {% for product in products %}
             {% if product.artist == "David Bowie" %}

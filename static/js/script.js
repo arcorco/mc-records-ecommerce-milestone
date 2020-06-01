@@ -1,6 +1,7 @@
 $(document).ready(function () {
   $('.slider').slider();
   $('select').formSelect();
+  $('.sidenav').sidenav();
 
   var slider = document.getElementById('slider');
   noUiSlider.create(slider, {
