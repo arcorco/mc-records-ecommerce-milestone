@@ -2,12 +2,15 @@
 {% load cloudinary %}
 {% block content %}
 <div class="row center container product-container">
-    <div class="col s8">
-        <div class="product">
+    <div class="col s12 m8">
+        <div class="product hide-on-small-only">
             {% cloudinary product.cover width=450 height=450 %}
         </div>
+        <div class="product hide-on-med-and-up">
+            {% cloudinary product.cover width=315 height=315 %}
+        </div>
     </div>
-    <div class="col s4">
+    <div class="col s12 m4">
         <h3>{{ product.album }}</h3>
         <h4>{{ product.artist }}</h4>
         <h5>{{ product.price }}</h5>
@@ -56,8 +59,11 @@
     {% for product in random_albums %}
     <a href="{%  url 'product_detail' product.id %}">
         <div class="col s4 center">
-            <div class="product">
+            <div class="product hide-on-small-only">
                 {% cloudinary product.cover width=200 height=200 %}
+            </div>
+            <div class="product hide-on-med-and-up">
+                {% cloudinary product.cover width=100 height=100 %}
             </div>
             <p>{{ product.artist }} - <strong>{{ product.album }}</strong></p>
         </div>
