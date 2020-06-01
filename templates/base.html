@@ -106,7 +106,7 @@
         <li class="mobile-navitem"><a href="{% url 'products' %}" class="nav-text">Shop Now</a></li>
         {% if user.is_authenticated %}
         <li class="mobile-navitem"><a href="{% url 'profile' %}" class="nav-text">My Account</a></li>
-        <li><a href="{% url 'logout' %}" class="nav-text">Logout</a></li>
+        <li class="mobile-navitem"><a href="{% url 'logout' %}" class="nav-text">Logout</a></li>
         {% else %}
         <li class="mobile-navitem"><a href="{% url 'login' %}" class="nav-text">Login</a></li>
         <li class="mobile-navitem"><a href="{% url 'registration' %}" class="nav-text">Register</a></li>
@@ -119,8 +119,7 @@
         <div class="row" id="message-card">
             <div class="col s12 m6">
                 <div class="card-panel message-card">
-                    <h6 class="card-title">{{message}}<button id="message-close"><i
-                                class="material-icons right">close</i></button></h6>
+                    <h6 class="card-title">{{message}}</h6>
                 </div>
             </div>
         </div>
@@ -148,7 +147,7 @@
                 <a href="https://www.instagram.com/" target="blank"><i class="fa fa-instagram"></i></a>
             </div>
         </div>
-        <div class="row container footer show-on-small-only">
+        <div class="row container footer hide-on-med-and-up">
             <div class="col s12 center">
                 <a style="color: white;" href="{% url 'products' %}">
                     <h5>Shop now</h5>
