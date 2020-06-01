@@ -4,18 +4,26 @@
 {% load mathfilters %}
 
 {% block content %}
-<div class="container cart-container">
+<div class="cart-container">
     {% for item in cart_items %}
     <div class="row">
-        <div class="col s3">
-            {% cloudinary item.product.cover width=200 height=200 %}
+        <div class="col m4 l3 hide-on-small-only">
+            {% cloudinary item.product.cover width=190 height=190 %}
         </div>
-        <div class="col s4">
+        <div class="col s6 hide-on-med-and-up">
+            {% cloudinary item.product.cover width=150 height=150 %}
+        </div>
+        <div class="col m3 l4 hide-on-small-only">
             <h4>{{ item.product.album }}</h4>
             <h5>{{ item.product.artist }}</h5>
             <p>£{{ item.product.price }}</p>
         </div>
-        <div class="col s3">
+        <div class="col s6 hide-on-med-and-up">
+            <h6>{{ item.product.album }}, {{ item.product.artist }}</h6>
+            <p>£{{ item.product.price }}</p>
+            <p>Subtotal: £{{ item.quantity|mul:item.product.price }}</p>
+        </div>
+        <div class="col m3 l3">
             <p>
                 <form action="{% url 'adjust_cart' item.id %}" method="POST" class="form-inline">
                     {% csrf_token %}
@@ -30,16 +38,18 @@
                 </form>
             </p>
         </div>
-        <div class="col s2 right-align">
+        <div class="col m2 right-align hide-on-small-only">
             <h5>Subtotal:</h5>
-            <p>£{{ item.quantity|mul:item.product.price }}</p>
+            <h6>£{{ item.quantity|mul:item.product.price }}</h6>
         </div>
     </div>
     {% endfor %}
     <div class="row right-align">
-        <p>Total:</p>
-        <p>£{{ total }}</p>
+        <div class="s12 col">
+        <h5>Total:</h5>
+        <h6>£{{ total }}</h6>
         <a href="{% url 'checkout' %}" class="btn waves-effect waves-light nav-text" role="button">Continue to checkout</a>
+    </div>
     </div>
 </div>
 

@@ -8,71 +8,67 @@
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
     //<![CDATA[
-        Stripe.publishableKey = '{{ publishable }}';
+    Stripe.publishableKey = '{{ publishable }}';
     //]]>
 </script>
 <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
 {% endblock %}
 
 {% block content %}
+<div class="row right-align container">
+    <a href="{% url 'view_cart' %}" class="btn waves-effect waves-light">Back to Cart</a>
+</div>
 <div class="container">
     {% for item in cart_items %}
-    <div class="row">
-        <div class="col s3">
+    <div class=" row">
+        <div class="col s6 m4">
             {% cloudinary item.product.cover width=150 height=150 %}
         </div>
-        <div class="col s4">
-            <p>{{ item.product.album }}</p>
-            <p>{{ item.product.artist }}</p>
+        <div class="col m4 hide-on-small-only">
+            <h6>{{ item.product.album }}</h6>
+            <h6>{{ item.product.artist }}</h6>
+            <h6>£{{ item.product.price }}</h6>
+        </div>
+        <div class="col s6 hide-on-med-and-up">
+            <p>{{ item.product.album }}, {{ item.product.artist }}</p>
             <p>£{{ item.product.price }}</p>
+            <p>Subtotal: £{{ item.quantity|mul:item.product.price }}</p>
         </div>
-        <div class="col s3">
-            <p>
-                <form action="{% url 'adjust_cart' item.id %}" method="POST" class="form-inline">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon">Quantity</div>
-                            <input type="number" name="quantity" min="0" max="25" class="form-control"
-                                value="{{ item.quantity }}">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn waves-effect waves-light">Amend</button>
-                </form>
-            </p>
+        <div class="col m4 right-align hide-on-small-only">
+            <h6>Subtotal:</h6>
+            <h6>£{{ item.quantity|mul:item.product.price }}</h6>
         </div>
-        <div class="col s2 right-align">
-            <p>Subtotal:</p>
-            <p>£{{ item.quantity|mul:item.product.price }}</p>
-        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
     <div class="row right-align">
-        <p>Total:</p>
-        <p>£{{ total }}</p>
-    </div>
-    <div class="row">
-        <form role="form" method="POST" id="payment-form" action="{% url 'checkout' %}">
-            <legend>Payment Details</legend>
-        
-            <div id="credit-card-errors" style="display: none">
-                <div class="alert-message block-message error" id="stripe-error-message"></div>
-            </div>
-        
-            <div class="form-group col s6">
-                {{ order_form | materializecss }}
-            </div>
-        
-            <div class="form-group col s6">
-                {{ payment_form | materializecss }}
-            </div>
-        
-            {% csrf_token %}
-            <div class="form-group right">
-                <input type="submit" class="btn btn-primary" id="submit_payment_btn" name="commit" value="Submit Payment">
-            </div>
-        </form>
+        <h5>Total:</h5>
+        <h6>£{{ total }}</h6>
     </div>
 </div>
+
+
+<div class="row container">
+    <form role="form" method="POST" id="payment-form" action="{% url 'checkout' %}">
+        <legend>Payment Details</legend>
+
+        <div id="credit-card-errors" style="display: none">
+            <div class="alert-message block-message error" id="stripe-error-message"></div>
+        </div>
+
+        <div class="form-group col s6">
+            {{ order_form | materializecss }}
+        </div>
+
+        <div class="form-group col s6">
+            {{ payment_form | materializecss }}
+        </div>
+
+        {% csrf_token %}
+        <div class="form-group right">
+            <input type="submit" class="btn btn-primary" id="submit_payment_btn" name="commit" value="Submit Payment">
+        </div>
+    </form>
+</div>
+
 
 {% endblock %}

@@ -2,7 +2,7 @@
 {% load cloudinary %}
 {% block content %}
 <div class="row center container product-container">
-    <div class="col s12 m8">
+    <div class="col s12 l8">
         <div class="product hide-on-small-only">
             {% cloudinary product.cover width=450 height=450 %}
         </div>
@@ -10,7 +10,7 @@
             {% cloudinary product.cover width=315 height=315 %}
         </div>
     </div>
-    <div class="col s12 m4">
+    <div class="col s12 l4">
         <h3>{{ product.album }}</h3>
         <h4>{{ product.artist }}</h4>
         <h5>{{ product.price }}</h5>
