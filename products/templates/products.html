@@ -3,7 +3,97 @@
 {% load materializecss %}
 {% block content %}
 
-<div class="row">
+<div class="row hide-on-med-and-up">
+  <div class="col s12">
+    <form method="GET">
+      <div class="col s4">
+        <div class="sort-div">
+          <h4>Sort by...</h4>
+          <div class="input-field">
+            <select id="sort" name="sort">
+              <option value="" disabled selected>Sort by</option>
+              <option value="recent">Recently added</option>
+              <option value="lowhigh">Price: lowest to highest</option>
+              <option value="highlow">Price: highest to lowest</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col s4">
+        <div class="filter-div">
+          <h4>Filter by...</h4>
+          <div class="input-field">
+            <select multiple name="artist" id="artist">
+              <option value="" disabled selected>Artist</option>
+              {% for artist in artist_list %}
+              <option name="artist{{ forloop.counter0 }}" value="{{ artist }}">{{ artist }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="input-field">
+            <select multiple name="genre" id="genre">
+              <option value="" disabled selected>Genre</option>
+              {% for genre in genres %}
+              <option value="{{ genre.0 }}">{{ genre.1 }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="input-field">
+            <select name="decade" id="decade">
+              <option value="" disabled selected>Decade</option>
+              {% for decade in decades %}
+              <option value="{{ decade }}">{{ decade }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col s4">
+        <div class="input-field">
+          <h5>Price range</h5>
+          <div class="" id="slider" name="price"></div>
+          <input id="price_min" name="price_min" type="hidden" value=""></input>
+          <input id="price_max" name="price_max" type="hidden" value=""></input>
+        </div>
+      </div>
+  </div>
+  <div class="row center">
+    <button class="btn waves-effect waves-light filter-button" id="filter-button" type=submit>Sort and
+      Filter</button>
+  </div>
+  </form>
+
+  <div class="col s12">
+    {% for product in products %}
+    <div class="col s6">
+      <div class="card">
+        <a href="{%  url 'product_detail' product.id %}">
+          <div class="product center">
+            {% cloudinary product.cover width=155 height=155 %}
+          </div>
+          <div class="card-content">
+            <h5>{{ product.album }}</h3>
+              <h5>{{ product.artist }}</h4>
+        </a>
+        <p>{{ product.price }}</p>
+
+        <form action="{% url 'add_to_cart' product.id %}" method="POST">
+          {% csrf_token %}
+          <div class="input-group">
+            <input type="number" min="1" max="25" name="quantity" class="form-control" placeholder="Quantity">
+            <span class="input-group-btn">
+              <button class="btn waves-effect waves-light" type="submit">Add</button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+
+<div class="row hide-on-small-only">
   <div class="col s3">
     <form method="GET">
       <div class="sort-div">
@@ -60,8 +150,11 @@
     <div class="col s4">
       <div class="card">
         <a href="{%  url 'product_detail' product.id %}">
-          <div class="product center">
+          <div class="product center hide-on-med-only">
             {% cloudinary product.cover width=210 height=210 %}
+          </div>
+          <div class="product center hide-on-large-only">
+            {% cloudinary product.cover width=160 height=160 %}
           </div>
           <div class="card-content">
             <h5>{{ product.album }}</h3>
@@ -81,11 +174,12 @@
       </div>
     </div>
   </div>
-  {% endfor %}
+{% endfor %}
 </div>
 </div>
 
-<div class="row container center">
+
+<div class="row center">
   {% if products.has_other_pages %}
   <ul class="pagination">
     {% if products.has_previous %}
