@@ -8,7 +8,6 @@ body {
 
   main {
     flex: 1 0 auto;
-    padding-top: 20px;
   }
 
 input {
@@ -184,6 +183,14 @@ box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.8);
     background-color: #448aff !important;
 }
 
+.banner {
+    background-color: #2962ff;
+    color: #fff176;
+    padding: 5px;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+    margin-top: 0px;
+}
 /*--------------------------------------------------Products page-------------*/
 
 .card {
