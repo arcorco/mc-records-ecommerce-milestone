@@ -117,4 +117,13 @@ def orders(request):
         else:
             order_totals_dict[key] += values
     order_totals = order_totals_dict.items()
-    return render(request, "order.html", {'orders': orders, "profile": user, "purchases": purchases, "order_totals": order_totals})
+    final_totals = []
+    for order_total in order_totals:
+        if order_total[1] > 30:
+            delivery = 0
+        else:
+            delivery = 3.95
+        final_totals.append((order_total[0], round(float(order_total[1]) + delivery, 2)))
+    
+    print(final_totals)
+    return render(request, "order.html", {'orders': orders, "profile": user, "purchases": purchases, "final_totals": final_totals})
