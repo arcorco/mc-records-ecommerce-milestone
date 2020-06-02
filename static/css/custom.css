@@ -41,6 +41,10 @@ a {
     height: 337.5px !important;
 }
 
+.title-font {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
 
 /*--------------------------------------------------Nav bar-------------*/
 .nav-middle {

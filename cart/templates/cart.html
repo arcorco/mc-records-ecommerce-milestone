@@ -5,6 +5,7 @@
 
 {% block content %}
 <div class="cart-container">
+    {% if cart_items %}
     {% for item in cart_items %}
     <div class="row">
         <div class="col m4 l3 hide-on-small-only">
@@ -46,11 +47,19 @@
     {% endfor %}
     <div class="row right-align">
         <div class="s12 col">
-        <h5>Total:</h5>
-        <h6>£{{ total }}</h6>
-        <a href="{% url 'checkout' %}" class="btn waves-effect waves-light nav-text" role="button">Continue to checkout</a>
+            <h5>Total:</h5>
+            <h6>£{{ total }}</h6>
+            <a href="{% url 'checkout' %}" class="btn waves-effect waves-light nav-text" role="button">Continue to
+                checkout</a>
+        </div>
     </div>
-    </div>
+    {% else %}
+    <div class="container center">
+    <h3 class="title-font">Your cart is empty!</h3>
+    <h5>Any items you add to your cart will appear here.</h5>
+    <a href="{% url 'products' %}" class="btn waves-effect waves-light nav-text" role="button">Start shopping</a>
+</div>
+    {% endif %}
 </div>
 
 
