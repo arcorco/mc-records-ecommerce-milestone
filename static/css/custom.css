@@ -200,6 +200,27 @@ box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.8);
     background-color: #448aff;
 }
 
+.pagination li {
+    font-family: 'Bebas Neue', sans-serif;
+    background-color: white;
+    border: solid #448aff 2px;
+}
+
+.pagination li a {
+    color: #448aff !important;
+}
+
+.pagination li.active {
+    background-color: #448aff;
+    color: white !important;
+}
+
+.page-number {
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+}
+
 /*--------------------------------------------------Product details page-------------*/
 .product-container {
     padding-top: 20px;
