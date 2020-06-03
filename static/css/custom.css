@@ -17,6 +17,9 @@ input {
 
 .btn {
     background-color: #448aff !important;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    font-size: 18px;
 }
 
 .btn:hover {
@@ -45,7 +48,6 @@ a {
 .title-font {
     font-family: 'Bebas Neue', sans-serif;
 }
-
 
 /*--------------------------------------------------Nav bar-------------*/
 .nav-middle {

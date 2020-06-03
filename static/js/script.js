@@ -3,7 +3,8 @@ $(document).ready(function () {
   $('select').formSelect();
   $('.sidenav').sidenav();
 
-  var slider = document.getElementById('slider');
+  var slider = document.getElementById('price-slider');
+  
   noUiSlider.create(slider, {
     start: [0, 20],
     step: 1,
@@ -11,7 +12,7 @@ $(document).ready(function () {
     range: {
       'min': 0,
       'max': 20
-    },
+    }
   });
 
   slider.noUiSlider.on('update', function (values, handle) {
