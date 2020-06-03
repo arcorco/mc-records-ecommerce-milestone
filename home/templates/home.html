@@ -74,7 +74,7 @@
             <li>
                 <div class="product">
                     <a href="{%  url 'product_detail' product.id %}">
-                        {% cloudinary product.cover width=450 height=450 %}
+                        {% cloudinary product.cover width=300 height=300 %}
                     </a>
                 </div>
             </li>
@@ -84,7 +84,7 @@
     </div>
 </div>
 <div class="row center">
-    <h4>David Bowie</h4>
+    <h4 class="spotlight-artist">David Bowie</h4>
 </div>
 
 {% endblock %}

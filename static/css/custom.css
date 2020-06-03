@@ -193,8 +193,17 @@ box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.8);
     padding-bottom: 60px;
 }
 
+.indicators {
+    position: relative !important;
+    padding-top: 20px !important;
+}
+
 .indicator-item.active {
     background-color: #448aff !important;
+}
+
+.spotlight-artist {
+    margin-top: -25px;
 }
 
 /*--------------------------------------------------Products page-------------*/
@@ -437,7 +446,7 @@ tr:hover {
     }
 
     .slides {
-        height: 400px !important;
+        height: 450px !important;
     }
 
     .recently-released-badge {
@@ -449,6 +458,11 @@ tr:hover {
         margin-left: -7px !important;
         height: 18px;
     width: 18px;
+    }
+
+    .spotlight-artist {
+        margin-top: 0px;
+        padding-top: 30px;
     }
 }
 
