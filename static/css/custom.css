@@ -25,6 +25,7 @@ input {
 
 a {
     color: black;
+    font-family: 'BenchNine', sans-serif !important;
 }
 
 .message-card {
@@ -430,6 +431,20 @@ tr:hover {
 .login-btn {
     margin-top: 5px;
     margin-bottom: 15px;
+}
+
+/*--------------------------------------------------Error page-------------*/
+.error-content {
+    font-size: 25px;
+}
+
+.error-content a {
+    color: #448aff;
+    transition-duration: 0.2s;
+}
+
+.error-content a:hover {
+    color: black;
 }
 
 /*--------------------------------------------------Media Queries-------------*/
