@@ -19,6 +19,7 @@ stripe.api_key = settings.STRIPE_SECRET
 
 @login_required()
 def checkout(request):
+    """Renders checkout page with form for user to purchase prodcuts using Stripe API"""
     cart = request.session.get('cart', {})
     total = 0
     for id, quantity in cart.items():
@@ -79,6 +80,7 @@ def checkout(request):
 
 @login_required()
 def confirmation(request, id):
+    """Renders user confirmation page to showing an order summary"""
     order = Order.objects.get(id=id)
     purchases = OrderLineItem.objects.filter(order_id=id)
     user = User.objects.get(email=request.user.email)

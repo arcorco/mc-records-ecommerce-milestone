@@ -6,9 +6,11 @@ import random
 
 # Create your views here.
 def is_valid_queryparam(param):
+    """Checks if sort or filter query is valid"""
     return param != '' and param != [] and param is not None
 
 def all_products(request):
+    """Renders products page to show all products with sort anf filter functionality"""
     product_list = Product.objects.all()
     artist_list = Product.objects.values_list('artist', flat=True).distinct()
     artist = request.GET.getlist('artist')
@@ -55,6 +57,7 @@ def all_products(request):
          'genres': Product.GENRE_CHOICES, 'decades': [1970, 1980, 1990, 2000, 2010, 2020]})
 
 def product_detail(request, id):
+    """Renders product detail page"""
     product_list = Product.objects.all()
     product_list_without_current = product_list.exclude(pk=id)
     product = get_object_or_404(Product, pk=id)
@@ -63,6 +66,7 @@ def product_detail(request, id):
     return render(request, 'product_page.html', {'product': product, 'tracks': tracks, 'random_albums': random_albums})
 
 def product_decades(request, decade):
+    """Renders decades page to show products already filtered by decades with further sort and filter functionality"""
     product_list = Product.objects.filter(release_date__range=[decade+'-01-01', str(int(decade)+10)+'-01-01'])
     artist_list = Product.objects.values_list('artist', flat=True).distinct()
     artist = request.GET.getlist('artist')

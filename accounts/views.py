@@ -80,6 +80,7 @@ def user_profile(request):
 
 @login_required
 def edit_profile(request):
+    """User edit profile page and form to allow user's to update their details"""
     if request.method == 'POST':
         edit_form = EditProfileForm(request.POST, instance=request.user)
 
@@ -96,6 +97,7 @@ def edit_profile(request):
 
 
 def orders(request):
+    """Renders user order page and shows the orders they've made on their account"""
     purchases = OrderLineItem.objects.all()
     user = User.objects.get(email=request.user.email)
     orders = Order.objects.filter(purchased_by=user.username)

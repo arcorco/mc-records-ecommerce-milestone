@@ -3,9 +3,11 @@ from django.shortcuts import render, redirect, reverse
 # Create your views here.
 
 def view_cart(request):
+    """Renders users cart"""
     return render(request, "cart.html")
 
 def add_to_cart(request, id):
+    """Allows user to add items to cart"""
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
 
@@ -18,6 +20,7 @@ def add_to_cart(request, id):
     return redirect(reverse('products'))
 
 def adjust_cart(request, id):
+    """Allows user to alter items in their cart by changing to amount of each item"""
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
 
