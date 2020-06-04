@@ -22,17 +22,28 @@ class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email', 'username', 'password1', 'password2']
+        help_texts = {
+            'username': None,
+        }
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')
         if User.objects.filter(email=email).exclude(username=username):
-            raise forms.ValidationError(u'Email address must be unique')
+            raise forms.ValidationError(u'This email address is already in use. Please use a unique email address.')
         return email
+    
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError(u'This username already exists. Please choose a unique username.')
+        return username
 
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
+        if len(password1) < 6:
+            raise ValidationError("Password must be at least 6 characters.")
 
         if not password1 or not password2:
             raise ValidationError("Please confirm your password")
@@ -43,6 +54,7 @@ class UserRegistrationForm(UserCreationForm):
         return password2
 
 class EditProfileForm(UserChangeForm):
+    """Form to be used to edit profile details"""
     password = None
 
     class Meta:
