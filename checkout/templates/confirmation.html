@@ -2,6 +2,8 @@
 {% load cloudinary %}
 {% block content %}
 
+{% block page_title %}Order {{ order.id }} Confirmation {% endblock %}
+
 <div class="row container">
     <h4>{{ profile.first_name }}, thank you for your order!</h4>
     <div class="divider"></div>
