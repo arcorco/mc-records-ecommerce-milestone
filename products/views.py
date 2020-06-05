@@ -68,7 +68,16 @@ def product_detail(request, id):
 def product_decades(request, decade):
     """Renders decades page to show products already filtered by decades with further sort and filter functionality"""
     product_list = Product.objects.filter(release_date__range=[decade+'-01-01', str(int(decade)+10)+'-01-01'])
-    artist_list = Product.objects.values_list('artist', flat=True).distinct()
+    artist_list = Product.objects.filter(release_date__range=[decade+'-01-01', str(int(decade)+10)+'-01-01']).values_list('artist', flat=True).distinct()
+    genre_list = Product.objects.filter(release_date__range=[decade+'-01-01', str(int(decade)+10)+'-01-01']).values_list('genre', flat=True).distinct()
+    decade_genres = []
+
+    for k, v in Product.GENRE_CHOICES:
+        for item in genre_list:
+            if item == k:
+                decade_genres.append(v)
+
+    print(decade_genres)
     artist = request.GET.getlist('artist')
     genre = request.GET.getlist('genre')
     price_min = request.GET.get('price_min')
@@ -105,4 +114,4 @@ def product_decades(request, decade):
         products = paginator.page(paginator.num_pages)
 
     return render(request, "decades.html", {"products": products, 'artist_list': artist_list,
-         'genres': Product.GENRE_CHOICES})
+         'genres': decade_genres})

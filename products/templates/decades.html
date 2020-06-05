@@ -1,9 +1,10 @@
 {%  extends 'base.html' %}
 {% load cloudinary %}
 {% load materializecss %}
-{% block content %}
 
 {% block page_title %}Products by decade{% endblock %}
+
+{% block content %}
 
 <div class="row">
   <div class="col s12 m3">
@@ -33,7 +34,7 @@
           <select multiple name="genre" id="genre">
             <option value="" disabled selected>Genre</option>
             {% for genre in genres %}
-            <option value="{{ genre.0 }}">{{ genre.1 }}</option>
+            <option value="{{ genre }}">{{ genre }}</option>
             {% endfor %}
           </select>
         </div>
