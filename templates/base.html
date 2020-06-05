@@ -30,17 +30,7 @@
     <nav class="nav-extended black hide-on-small-only">
         <div class="nav-wrapper row">
             <a href="{% url 'home' %}" class="brand-logo center logo">MC Records</a>
-            <div class="col s4">
-                <form method="GET" action="{% url 'search' %}">
-                    <div class="input-field">
-                        <input id="search" type="search" name="q" required>
-                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons">close</i>
-                    </div>
-                </form>
-            </div>
-            <div class="col s2"></div>
-            <div class="col s6 right-align">
+            <div class="col s12 right-align">
                 <a href="{% url 'view_cart' %}">
                     <i class="material-icons cart-badge-icon nav-text">shopping_cart</i>
                     {% if product_count > 0 %}
@@ -52,6 +42,22 @@
             </div>
         </div>
         <div class="nav-content row">
+            <div class="col s4 search-col">
+                <div class="row">
+                    <form method="GET" action="{% url 'search' %}">
+                        <div class="search-form">
+                            <div class="input-field col s10">
+                                <input id="search" type="search" name="q" required>
+                                <label for="search">Search...</label>
+                            </div>
+                            <div class="col s2">
+                                <button type="submit" class="search-btn" id="search-button">
+                                    <i class="material-icons">search</i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <div class="col nav-middle brand-logo center">
                 <ul class="navbar nav">
                     <li class="nav-item"><a href="{% url 'home' %}" class="nav-text">Home</a></li>
@@ -76,13 +82,14 @@
     </nav>
 
     <nav class="nav-extended black hide-on-med-and-up">
-        <div class="nav-wrapper row">
+        <div class="nav-wrapper row center">
             <a href="{% url 'home' %}" class="brand-logo center mobile-logo">MC Records</a>
-            <div class="col s6">
+            <div class="col s10">
                 <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i
                         class="material-icons mobilenav-icon">menu</i></a>
             </div>
-            <div class="col s6 right-align">
+            <div class="col s2 right-align">
+                
                 <a href="{% url 'view_cart' %}">
                     <i class="material-icons nav-text mobilenav-icon right-align">shopping_cart</i>
                     {% if product_count > 0 %}
@@ -91,16 +98,22 @@
                     </span>
                     {% endif %}
                 </a>
+            
             </div>
             <div class="col s12 mobile-search">
-            <form method="GET" action="{% url 'search' %}">
-                <div class="input-field">
-                    <input id="search" type="search" name="q" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
-                </div>
-            </form>
-        </div>
+                <form method="GET" action="{% url 'search' %}">
+                    <div class="search-form">
+                        <div class="input-field col s10">
+                            <input id="search" type="search" name="q" required>
+                            <label for="search">Search...</label>
+                        </div>
+                        <div class="col s2">
+                            <button type="submit" class="search-btn" id="search-button">
+                                <i class="material-icons">search</i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="row center banner">
             <h6>FREE DELIVERY WHEN YOU SPEND OVER £30.00</h6>

@@ -27,6 +27,5 @@ $(document).ready(function () {
   $('#filter-button').addEventListener.on('click', function() {
     var artists = $("#artist").val();
     $("#artist").attr("value", artists);
-  })
-
+  });
 });

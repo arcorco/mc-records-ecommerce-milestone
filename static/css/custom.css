@@ -50,6 +50,10 @@ a {
 }
 
 /*--------------------------------------------------Nav bar-------------*/
+.nav-wrapper {
+    margin: 0px;
+}
+
 .nav-middle {
     float: none !important;
 }
@@ -119,7 +123,20 @@ a {
 .mobile-search {
     color: black;
     background-color: black;
-    margin-top: 20px;
+    margin-top: 25px;
+}
+
+.mobile-search input {
+    height: 40px !important;
+}
+
+.mobile-search .search-btn {
+    height: 44px;
+}
+
+.mobile-search .search-form label {
+    height: 40px;
+    margin-top: -23px;
 }
 
 .banner {
@@ -130,6 +147,53 @@ a {
     letter-spacing: 2px;
     margin-top: 0px;
     margin-bottom: 0px;
+}
+
+.search-btn {
+    display: inline-block;
+    position: relative;
+    background-color: black;
+    color: white;
+    height: 49px;
+    border: solid 2px white;
+    transition: 0.3s;
+    margin-top: -10px;
+    margin-left: -26px;
+}
+
+.search-btn:hover {
+    border-color: #448aff;
+    color: #448aff;
+}
+
+.search-btn i {
+    font-size: 30px !important;
+    margin-top: -5px;
+    margin-left: -1px;
+}
+
+.search-form input {
+    display: inline-block;
+    border-left: solid 2px white !important;
+    border-bottom: solid 2px white !important;
+    border-top: solid 2px white !important;
+    margin-top: -7px !important;
+    margin-bottom: 0px !important;
+}
+
+.search-form label {
+    color: white;
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+input[type="search"]:not(.browser-default):focus:not([readonly]) + label {
+    color: #448aff;
+    margin-top: -25px;
+}
+
+.search-col {
+    margin-left: 10px !important;
 }
 
 /*--------------------------------------------------Home page-------------*/
@@ -303,6 +367,12 @@ tr:hover {
 
 .cart-container {
     height: 100%;
+}
+
+/*--------------------------------------------------Checkout page-------------*/
+
+.btn-row {
+    padding-top: 10px;
 }
 
 /*--------------------------------------------------Profile pages-------------*/
@@ -481,10 +551,41 @@ tr:hover {
         margin-top: 0px;
         padding-top: 30px;
     }
+
+    .search-btn {
+        height: 46px;
+    }
+
+    input[type="search"]:not(.browser-default):focus:not([readonly]) + label {
+        color: #448aff;
+        margin-top: -15px;
+    }
+
+    .nav-wrapper {
+        margin: 20px;
+    }
+
+    .search-form input {
+        margin-top: -10px !important;
+        margin-left: -5px !important;
+    }
+
+    .search-form label {
+        margin-top: -10px;
+    }
 }
 
 @media (min-width: 1200px) {
     .recently-released-badge {
         margin-right: 60px;
+    }
+
+    input[type="search"]:not(.browser-default):focus:not([readonly]) + label {
+        color: #448aff;
+        margin-top: -10px;
+    }
+
+    .search-btn {
+        height: 49px;
     }
 }
