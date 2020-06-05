@@ -577,7 +577,7 @@ tr:hover {
 
 @media (min-width: 1200px) {
     .recently-released-badge {
-        margin-right: 60px;
+        margin-right: 150px;
     }
 
     input[type="search"]:not(.browser-default):focus:not([readonly]) + label {
