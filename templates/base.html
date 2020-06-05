@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
     <link href="{% static 'css/nouislider.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
@@ -89,7 +93,7 @@
                         class="material-icons mobilenav-icon">menu</i></a>
             </div>
             <div class="col s2 right-align">
-                
+
                 <a href="{% url 'view_cart' %}">
                     <i class="material-icons nav-text mobilenav-icon right-align">shopping_cart</i>
                     {% if product_count > 0 %}
@@ -98,7 +102,7 @@
                     </span>
                     {% endif %}
                 </a>
-            
+
             </div>
             <div class="col s12 mobile-search">
                 <form method="GET" action="{% url 'search' %}">
