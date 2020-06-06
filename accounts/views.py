@@ -69,13 +69,11 @@ def registration(request):
     return render(request, "register.html", {
         "registration_form": registration_form})
 
-
+@login_required
 def user_profile(request):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
-    return render(request, "profile.html", {
-        "profile": user
-    })
+    return render(request, "profile.html", {"profile": user })
 
 
 @login_required
@@ -95,7 +93,7 @@ def edit_profile(request):
         args = {'edit_form': edit_form}
         return render(request, "edit_profile.html", args)
 
-
+@login_required
 def orders(request):
     """Renders user order page and shows the orders they've made on their account"""
     purchases = OrderLineItem.objects.all()
@@ -127,5 +125,4 @@ def orders(request):
             delivery = 3.95
         final_totals.append((order_total[0], round(float(order_total[1]) + delivery, 2)))
     
-    print(final_totals)
     return render(request, "order.html", {'orders': orders, "profile": user, "purchases": purchases, "final_totals": final_totals})
