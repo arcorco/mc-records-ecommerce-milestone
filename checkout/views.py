@@ -66,7 +66,7 @@ def checkout(request):
             if customer.paid:
                 messages.error(request, "You have successfully paid!")
                 request.session['cart'] = {}
-                return redirect(reverse('products'))
+                return redirect(reverse('confirmation', args=(order.id,)))
             else:
                 messages.error(request, "Unable to take payment")
         else:
@@ -85,9 +85,7 @@ def confirmation(request, id):
     purchases = OrderLineItem.objects.filter(order_id=id)
     user = User.objects.get(email=request.user.email)
     if order.purchased_by != request.user.username:
-        response = HttpResponse()
-        response.status_code = 403
-        return response
+        return render(request, "403.html")
     totals = []
     total = 0
     for purchase in purchases:
@@ -106,7 +104,7 @@ def confirmation(request, id):
     else:
         delivery = 3.95
     
-    final_total = order_total[0][1] + delivery
+    final_total = round(order_total[0][1] + delivery, 2)
 
     return render(request, "confirmation.html", {'order': order, "profile": user, "purchases": purchases, "final_total": final_total})
         

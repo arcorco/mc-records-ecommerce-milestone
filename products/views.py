@@ -77,7 +77,6 @@ def product_decades(request, decade):
             if item == k:
                 decade_genres.append(v)
 
-    print(decade_genres)
     artist = request.GET.getlist('artist')
     genre = request.GET.getlist('genre')
     price_min = request.GET.get('price_min')
