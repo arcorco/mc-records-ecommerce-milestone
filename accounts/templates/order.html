@@ -26,8 +26,7 @@
 
         {% else %}
         {% for order in orders %}
-        <div class="divider"></div>
-        <div class="row">
+        <div class="row all-orders">
             <div class="col s6 m2">
                 <h6 class="order-product">Order Number: </br> {{ order.id }}</h6>
                 <h6 class="order-product">Order Date: </br> {{ order.date }}</h6>
@@ -62,7 +61,6 @@
 
             </div>
         </div>
-        <div class="divider"></div>
         {% endfor %}
         {% endif %}
     </div>

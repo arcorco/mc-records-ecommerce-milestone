@@ -413,18 +413,22 @@ tr:hover {
 }
 
 .order-container {
-    background-color: white;
     padding-top: 10px !important;
     padding-bottom: 10px !important;
-    border: solid black 2px;
 }
 
 .order-product {
     margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .order-product-row {
     margin-bottom: 0px;
+}
+
+.all-orders {
+    background-color: white;
+    border: solid 2px black;
 }
 
 .edit-detail-container {
