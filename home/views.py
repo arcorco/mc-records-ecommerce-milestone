@@ -8,5 +8,3 @@ def index(request):
     products = Product.objects.all()
     recently_released = Product.objects.order_by('-release_date').all()[:3]
     return render(request, 'home.html',{"products": products, "recently_released": recently_released})
-
-
