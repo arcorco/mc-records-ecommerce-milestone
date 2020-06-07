@@ -5,7 +5,6 @@
 {% block page_title %}Products{% endblock %}
 
 {% block content %}
-
 <div class="row">
   <div class="col s12 m3">
     <form method="GET">
@@ -50,15 +49,15 @@
       <div class="input-field filter-field col s4 m12">
         <h5>Price range</h5>
         <div class="noUiSlider" id="price-slider" name="price"></div>
-        <input id="price_min" name="price_min" type="hidden" value=""></input>
-        <input id="price_max" name="price_max" type="hidden" value=""></input>
+        <input id="price_min" name="price_min" type="hidden" value="">
+        <input id="price_max" name="price_max" type="hidden" value="">
       </div>
       <div class="row center">
-      <button class="btn waves-effect waves-light filter-button" id="filter-button" type=submit>Sort and Filter</button>
-    </div>
+        <button class="btn waves-effect waves-light filter-button" id="filter-button" type=submit>Sort and
+          Filter</button>
+      </div>
     </form>
   </div>
-
 
   <div class="col m9">
     {% for product in products %}
@@ -75,8 +74,9 @@
             {% cloudinary product.cover width=160 height=160 alt="Album cover" %}
           </div>
           <div class="card-content">
-            <h5>{{ product.album }}</h3>
-              <h5>{{ product.artist }}</h4>
+            <h5>{{ product.album }}</h5>
+            <h5>{{ product.artist }}</h5>
+          </div>
         </a>
         <p>{{ product.price }}</p>
 
@@ -95,7 +95,6 @@
   {% endfor %}
 </div>
 
-
 <div class="row center">
   {% if products.has_other_pages %}
   <ul class="pagination">
@@ -109,4 +108,5 @@
   </ul>
   {% endif %}
 </div>
+
 {% endblock %}

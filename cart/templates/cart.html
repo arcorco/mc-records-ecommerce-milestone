@@ -27,7 +27,6 @@
             <p>Subtotal: £{{ item.quantity|mul:item.product.price }}</p>
         </div>
         <div class="col m3 l3">
-            <p>
                 <form action="{% url 'adjust_cart' item.id %}" method="POST" class="form-inline">
                     {% csrf_token %}
                     <div class="form-group">
@@ -39,7 +38,6 @@
                     </div>
                     <button type="submit" class="btn waves-effect waves-light">Amend</button>
                 </form>
-            </p>
         </div>
         <div class="col m2 right-align hide-on-small-only">
             <h5>Subtotal:</h5>
@@ -57,13 +55,11 @@
     </div>
     {% else %}
     <div class="container center">
-    <h3 class="title-font">Your cart is empty!</h3>
-    <h5>Any items you add to your cart will appear here.</h5>
-    <a href="{% url 'products' %}" class="btn waves-effect waves-light nav-text" role="button">Start shopping</a>
-</div>
+        <h3 class="title-font">Your cart is empty!</h3>
+        <h5>Any items you add to your cart will appear here.</h5>
+        <a href="{% url 'products' %}" class="btn waves-effect waves-light nav-text" role="button">Start shopping</a>
+    </div>
     {% endif %}
 </div>
-
-
 
 {% endblock %}

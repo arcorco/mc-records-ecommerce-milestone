@@ -1,19 +1,18 @@
 {% extends 'base.html' %}
-
 {% load materializecss %}
 
 {% block page_title %}Registration Page{% endblock %}
 
-
 {% block content %}
 <div class="row container">
     <h3 class="password-heading-font">Register</h3>
-<h6 class="login-info">If you already have an account, you can login on the login page<a href="{% url 'login' %}"><i class="material-icons login-icon">person</i></a></h6>
+    <h6 class="login-info">If you already have an account, you can login on the login page<a href="{% url 'login' %}"><i
+                class="material-icons login-icon">person</i></a></h6>
 
-<form method="POST">
-    {% csrf_token %}
-    {{ registration_form | materializecss }}
-    <button type="submit" class="btn waves-effect waves-light">Register</button>
-</form>
+    <form method="POST">
+        {% csrf_token %}
+        {{ registration_form | materializecss }}
+        <button type="submit" class="btn waves-effect waves-light">Register</button>
+    </form>
 </div>
 {% endblock %}

@@ -54,8 +54,8 @@
 </div>
 
 <div class="row container">
-    <form role="form" method="POST" id="payment-form" action="{% url 'checkout' %}">
-        <legend>Payment Details</legend>
+    <form method="POST" id="payment-form" action="{% url 'checkout' %}">
+        <h6>Payment Details</h6>
 
         <div id="credit-card-errors" style="display: none">
             <div class="alert-message block-message error" id="stripe-error-message"></div>
@@ -75,6 +75,5 @@
         </div>
     </form>
 </div>
-
 
 {% endblock %}

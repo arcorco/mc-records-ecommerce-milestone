@@ -9,30 +9,29 @@
     <h4>{{ profile.first_name }}, thank you for your order!</h4>
     <div class="divider"></div>
     <h5>Order Summary:</h5>
-        <div class="col s3">
-            <h6>Order Number: {{ order.id }}</h6>
-            <h6>Order Date: {{ order.date }}</h6>
-            <h6>Delivery Address: {{ order.street_address }}, {{ order.town_or_city }}, {{ order.postcode }}</h6>
-        </div>
-        <div class="col s6 center">
-            {% for purchase in purchases %}
-            <div class="row">
-                <div class="col s6 left">
-                    <div class="product">
-                        {% cloudinary purchase.product.cover width=75 height=75 alt="Album cover" %}
-                    </div>
-                </div>
-                <div class="col s6 right">
-                    <h6>{{ purchase.product.album }} - {{ purchase.product.artist }}</h6>
-                    <h6>Quantity: {{ purchase.quantity }}</h6>
+    <div class="col s3">
+        <h6>Order Number: {{ order.id }}</h6>
+        <h6>Order Date: {{ order.date }}</h6>
+        <h6>Delivery Address: {{ order.street_address }}, {{ order.town_or_city }}, {{ order.postcode }}</h6>
+    </div>
+    <div class="col s6 center">
+        {% for purchase in purchases %}
+        <div class="row">
+            <div class="col s6 left">
+                <div class="product">
+                    {% cloudinary purchase.product.cover width=75 height=75 alt="Album cover" %}
                 </div>
             </div>
-            {% endfor %}
+            <div class="col s6 right">
+                <h6>{{ purchase.product.album }} - {{ purchase.product.artist }}</h6>
+                <h6>Quantity: {{ purchase.quantity }}</h6>
+            </div>
         </div>
-        <div class="col s3 right-align">
-            <h6>Total: £{{ final_total }}</h6>
+        {% endfor %}
+    </div>
+    <div class="col s3 right-align">
+        <h6>Total: £{{ final_total }}</h6>
 
-        </div>
     </div>
 </div>
 

@@ -11,21 +11,21 @@
         <a href="{% url 'profile' %}">
             <h6 class="current-page profile-nav">My details</h6>
         </a>
-        </br>
+        <br>
         <a href="{% url 'orders' %}">
             <h6 class="profile-nav">My orders</h6>
         </a>
     </div>
     <div class="col s10">
         <div class="detail-container">
-        <h4 class="profile-title">Personal Details</h4>
-        <h5 class="profile-details">Name:</h5>
-        <p class="profile-details details">{{ profile.first_name }} {{ profile.last_name }}</p>
-    </br>
-        <h5 class="profile-details">Email:</h5>
-        <p class="profile-details details">{{ profile.email }}</p>
-    </div>
-</br>
+            <h4 class="profile-title">Personal Details</h4>
+            <h5 class="profile-details">Name:</h5>
+            <p class="profile-details details">{{ profile.first_name }} {{ profile.last_name }}</p>
+            <br>
+            <h5 class="profile-details">Email:</h5>
+            <p class="profile-details details">{{ profile.email }}</p>
+        </div>
+        <br>
         <a href="{% url 'edit_profile' %}" class="waves-effect waves-light btn">Change Details</a>
         <a href="{% url 'password_reset' %}" class="waves-effect waves-light btn reset-password-btn">Reset Password</a>
     </div>
