@@ -34,7 +34,7 @@
           <select multiple name="genre" id="genre">
             <option value="" disabled selected>Genre</option>
             {% for genre in genres %}
-            <option value="{{ genre }}">{{ genre }}</option>
+            <option value="{{ genre.0 }}">{{ genre.1 }}</option>
             {% endfor %}
           </select>
         </div>
@@ -42,8 +42,8 @@
       <div class="input-field filter-field col s4 m12">
         <h5>Price range</h5>
         <div class="noUiSlider" id="price-slider" name="price"></div>
-        <input id="price_min" name="price_min" type="hidden" value="">
-        <input id="price_max" name="price_max" type="hidden" value="">
+        <input id="price_min" name="price_min" type="hidden" value=""></input>
+        <input id="price_max" name="price_max" type="hidden" value=""></input>
       </div>
       <div class="row center">
         <button class="btn waves-effect waves-light filter-button" id="filter-button" type=submit>Sort and
@@ -52,7 +52,7 @@
     </form>
   </div>
 
-  <div class="col m9">
+  <div class="col s12 m9">
     {% for product in products %}
     <div class="col s6 l4">
       <div class="card">
@@ -66,42 +66,43 @@
           <div class="product center hide-on-large-only hide-on-small-only">
             {% cloudinary product.cover width=160 height=160 alt="Album cover" %}
           </div>
-          <div class="card-content">
-            <h5>{{ product.album }}</h5>
-            <h5>{{ product.artist }}</h5>
-          </div>
         </a>
-        <p>{{ product.price }}</p>
+        <div class="card-content">
+          <h5>{{ product.album }}</h5>
+          <h5>{{ product.artist }}</h5>
 
-        <form action="{% url 'add_to_cart' product.id %}" method="POST">
-          {% csrf_token %}
-          <div class="input-group">
-            <input type="number" min="1" max="25" name="quantity" class="form-control" placeholder="Quantity" required>
-            <span class="input-group-btn">
-              <button class="btn waves-effect waves-light" type="submit">Add</button>
-            </span>
-          </div>
-        </form>
+          <p>{{ product.price }}</p>
+
+          <form action="{% url 'add_to_cart' product.id %}" method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+              <input type="number" min="1" max="25" name="quantity" class="form-control" placeholder="Quantity"
+                required>
+              <span class="input-group-btn">
+                <button class="btn waves-effect waves-light" type="submit">Add</button>
+              </span>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-  {% endfor %}
-</div>
-
-
-
-<div class="row center">
-  {% if products.has_other_pages %}
-  <ul class="pagination">
-    {% for i in products.paginator.page_range %}
-    {% if products.number == i %}
-    <li class="active page-number"><span>{{ i }}</span></li>
-    {% else %}
-    <li class="page-number"><a href="?page={{ i }}">{{ i }}</a></li>
-    {% endif %}
     {% endfor %}
-  </ul>
-  {% endif %}
+  </div>
 </div>
 
-{% endblock %}
+
+
+  <div class="row center">
+    {% if products.has_other_pages %}
+    <ul class="pagination">
+      {% for i in products.paginator.page_range %}
+      {% if products.number == i %}
+      <li class="active page-number"><span>{{ i }}</span></li>
+      {% else %}
+      <li class="page-number"><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+  {% endblock %}

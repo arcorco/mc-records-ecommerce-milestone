@@ -73,26 +73,26 @@
           <div class="product center hide-on-large-only hide-on-small-only">
             {% cloudinary product.cover width=160 height=160 alt="Album cover" %}
           </div>
-          <div class="card-content">
-            <h5>{{ product.album }}</h5>
-            <h5>{{ product.artist }}</h5>
-          </div>
         </a>
-        <p>{{ product.price }}</p>
-
-        <form action="{% url 'add_to_cart' product.id %}" method="POST">
-          {% csrf_token %}
-          <div class="input-group">
-            <input type="number" min="1" max="25" name="quantity" class="form-control" placeholder="Quantity" required>
-            <span class="input-group-btn">
-              <button class="btn waves-effect waves-light" type="submit">Add</button>
-            </span>
-          </div>
-        </form>
+        <div class="card-content">
+          <h5>{{ product.album }}</h5>
+          <h5>{{ product.artist }}</h5>
+          <p>{{ product.price }}</p>
+          <form action="{% url 'add_to_cart' product.id %}" method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+              <input type="number" min="1" max="25" name="quantity" class="form-control" placeholder="Quantity"
+                required>
+              <span class="input-group-btn">
+                <button class="btn waves-effect waves-light" type="submit">Add</button>
+              </span>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
+    {% endfor %}
   </div>
-  {% endfor %}
 </div>
 
 <div class="row center">
@@ -108,5 +108,4 @@
   </ul>
   {% endif %}
 </div>
-
 {% endblock %}
