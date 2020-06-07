@@ -1,6 +1,7 @@
-# Full Stack Framewords with Django Milestone Project - MC Records
+# Full Stack Framewords with Django Milestone Project - 
+# MC Records
 
-[![Build Status](https://travis-ci.org/arcorco/mc-records-ecommerce-milestone.svg?branch=master)](https://travis-ci.org/arcorco/mc-records-ecommerce-milestone)
+Travis CI: [![Build Status](https://travis-ci.org/arcorco/mc-records-ecommerce-milestone.svg?branch=master)](https://travis-ci.org/arcorco/mc-records-ecommerce-milestone)
 
 ### Project Overview
 
@@ -10,21 +11,21 @@ The purpose of this project is for users to purchase CDs from an e-commerce stor
 
 For the project I drew wireframes out on paper beforehand. Here are the images of the wireframes.
 <img src="static/images/README_images/Home_desktop.jpg" alt="Home Wireframe Desktop"
-width="30%"/>
+width="33%"/>
 <img src="static/images/README_images/Home_mobile.jpg" alt="Home Wireframe Mobile"
-width="30%"/>
+width="33%"/>
 <img src="static/images/README_images/Products_desktop.jpg" alt="Products Wireframe Desktop"
-width="30%"/>
+width="33%"/>
 <img src="static/images/README_images/Products_mobile.jpg" alt="Products Wireframe Mobile"
-width="30%"/>
+width="33%"/>
 <img src="static/images/README_images/Product_page_desktop.jpg" alt="Product Page Wireframe Desktop"
-width="30%"/>
+width="33%"/>
 <img src="static/images/README_images/Product_page_mobile.jpg" alt="Product Page Wireframe Mobile"
-width="30%"/>
+width="33%"/>
 <img src="static/images/README_images/Cart.jpg" alt="Cart Wireframe"
-width="30%"/>
+width="33%"/>
 <img src="static/images/README_images/Checkout.jpg" alt="Checkout Wireframe"
-width="30%"/>
+width="33%"/>
 
 - As a user who has a specific album in mind I would like to purchase, I can use the search bar to search for the album or the artist I am looking for. Furthermore, I can view specific details about the album such as its release date and the track listing of the album.
 - As a user looking to explore new music, I can view different areas of the home page such as "Hot New Music" which shows the most recently release ablums on the webiste, and "Artist Spotlight" which shows a selection of a particular artists albums.
@@ -52,16 +53,21 @@ On the users profile page, accessed via the "My Account" link in the nav bar the
 For a user who is not currently logged in, if they navigate to the Login page via the link on the nav bar and they have an account, they can input their account details to login in or request a password reset if they can't remember their password. This password reset link will will take them to a form for them to enter their email address where they will receive an email from the mcrecords.customerservice@gmail.com account with a specific link (generated for their request) for them to change their password. If the user doesn't have an account, they can create an account via the Register link in the nav bar. After logging in or creating and account the user will be taken to their profile page.
 
 ### Features To Implement
+
 #### Add A Review/Rating
+
 I would like to implement the ability for a logged in user to leave a review on an album they have bought. They would be able to leave a review and a rating which would show up on the albums details page so other users could see what they thought of the album. An average rating would be added to each product and this would be shown both on the product details page and the shop products page. I would also like to add the section "My Reviews" to the users profile page which shows reviews they have left on albums they have purchased.
 
 #### Contact Form
+
 Currently there is a "Contact us" section in the footer of each page, but this just displays information. I would like to implement a feature where this section could link the user to a form which they could fill out with their enquiry and it would send an email to the mcrecords.customerservice@gmail.com account where the content of the email is the enquiry made.
 
 #### Filter and Sort
+
 I feel the filtering and sorting of the products could be improved. Currently, to sort and filter the products the user must fill out the Sort and Filter forms each time as whenever the "SORT AND FILTER" button is clicked, the products page resets. I would like this feature to instead 'remember' the previous Sort and Filter selections made, so that for example if a user sorts the products by "Price: lowest to highest' and clicks "SORT AND FILTER" to sort the products, then they wish to filter the products they would currently need to select "Price: lowest to highest" from the sort selection again as well as choosing their filter options, but I think it would be much more user friendly if the products would remain sorted and the user did not need to select this sort choice again. 
 
-#### Technologies Used
+### Technologies Used
+
 - HTML5
 - CSS
 - JavaScript
@@ -80,6 +86,7 @@ I feel the filtering and sorting of the products could be improved. Currently, t
 - [Stripe (Test only)](https://stripe.com/gb)
 
 ### Testing
+
 The website was tested extensivley through many different means. All of the forms in the website are validated via django's form validation and HTMl required fields, so for example the user can't add a quantity of a product to the cart that isn't a number between 1 - 25. Furthermore, a user cannot crete an account with an email or username that is in use. I also carried out a lot of manual testing on the website, for example:
 
 1. A user who is not logged in tries to purchase an item
@@ -101,6 +108,7 @@ All HTML and CSS files validated via (https://www.w3.org/).
 JavaScript validated via (https://jshint.com/).
 
 ### Deployment
+
 This website was deployed to Heroku. I pushed my repository to GitHub, then built an app on Heroku and connected it to GitHub so that any repository pushes to GitHub would automatically build on Heroku. The environment variables used are the same in the deployed version as in the development version, held in an env.py file or as Heroku Config Var. To deploy to Heroku I also included a requirements.txt and a Procfile.
 
 To run the code locally, clone or download the repository and extract all files. Then start a virtual environment and install all packages from the requirements.txt file.
@@ -116,7 +124,8 @@ python manage.py runserver
 ```
 and open the app on your browser to view it.
 
-### Credits
+### Credits
+
 - The album covers, release date and track listings were from the respective album's Wikipedia pages. 
 
 - The decades images were from https://www.vecteezy.com/free-vector/gradients, https://cdn-media.threadless.com/challenges/90s_mainbanner.jpg, https://pbs.twimg.com/profile_images/464085880982884352/qLaRXz38_400x400.png. 
