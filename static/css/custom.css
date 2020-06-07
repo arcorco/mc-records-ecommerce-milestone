@@ -447,6 +447,12 @@ tr:hover {
     padding-top: 10px;
 }
 
+#credit-card-errors {
+    font-size: 20px;
+    color: #b71c1c;
+    text-transform: uppercase;
+}
+
 /*--------------------------------------------------Profile pages-------------*/
 
 .current-page {
