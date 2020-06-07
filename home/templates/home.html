@@ -13,10 +13,12 @@
         {% for product in recently_released %}
         <div class="col s12 m4">
             <div class="recently-released center-align">
-                <a href="{%  url 'product_detail' product.id %}">
-                    <div class="product">
+                <div class="product">
+                    <a href="{%  url 'product_detail' product.id %}">
                         {% cloudinary product.cover width=220 height=220 alt="Album cover" %}
-                    </div>
+                    </a>
+                </div>
+                <a href="{% url 'product_detail' product.id %}">
                     <span class="badge new recently-released-badge" data-badge-caption="">Tell me more</span>
                 </a>
             </div>
@@ -27,10 +29,12 @@
         {% for product in recently_released %}
         <div class="col s12 m4">
             <div class="recently-released">
-                <a href="{%  url 'product_detail' product.id %}">
-                    <div class="product">
+                <div class="product">
+                    <a href="{%  url 'product_detail' product.id %}">
                         {% cloudinary product.cover width=340 height=340 alt="Album cover" %}
-                    </div>
+                    </a>
+                </div>
+                <a href="{% url 'product_detail' product.id %}">
                     <span class="badge new recently-released-badge" data-badge-caption="">Tell me more</span>
                 </a>
             </div>
