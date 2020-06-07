@@ -4,7 +4,7 @@
 {% block page_title %}Edit Details{% endblock %}
 
 {% block content %}
-<div class="row container">
+<div class="row container edit-profile-container">
     <div class="col s2">
         <a href="{% url 'profile' %}">
             <h6 class="profile-nav">My details</h6>
@@ -14,7 +14,7 @@
             <h6 class="profile-nav">My orders</h6>
         </a>
     </div>
-    <div class="col s6">
+    <div class="col s9 l6">
         <div class="edit-detail-container">
             <h4>Update Personal Details</h4>
             <form method="POST">

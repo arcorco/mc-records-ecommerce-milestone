@@ -49,6 +49,58 @@ a {
     font-family: 'Bebas Neue', sans-serif;
 }
 
+.input-field {
+    background-color: white !important;
+    border: solid 2px black !important;
+}
+
+.input-field > label {
+    margin-top: -6px;
+}
+
+input {
+    border: none !important;
+}
+
+input[type="text"]:not(.browser-default):focus:not([readonly]) {
+    box-shadow: 0 1px 0 0 #448aff;
+}
+
+input[type="text"]:not(.browser-default):focus:not([readonly]) + label {
+    color: #448aff;
+    margin-top: -6px;
+}
+
+input[type="password"]:not(.browser-default):focus:not([readonly]) {
+    box-shadow: 0 1px 0 0 #448aff;
+}
+
+input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
+    color: #448aff;
+    margin-top: -6px;
+}
+
+input[type="email"]:not(.browser-default):focus:not([readonly]) {
+    box-shadow: 0 1px 0 0 #448aff;
+}
+
+input[type="email"]:not(.browser-default):focus:not([readonly]) + label {
+    color: #448aff;
+    margin-top: -6px;
+}
+
+input[type="number"]:not(.browser-default):focus:not([readonly]) {
+    box-shadow: 0 1px 0 0 #448aff;
+}
+
+input[type="number"]:not(.browser-default) {
+    box-shadow: 0 1px 0 0 #9e9e9e;
+}
+
+.dropdown-content li > span {
+    color: #448aff;
+}
+
 /*--------------------------------------------------Nav bar-------------*/
 .nav-wrapper {
     margin: 0px;
@@ -137,6 +189,11 @@ a {
 .mobile-search .search-form label {
     height: 40px;
     margin-top: -23px;
+}
+
+.search-input-field {
+    background-color: transparent !important;
+    border: none !important;
 }
 
 .banner {
@@ -292,6 +349,17 @@ input[type="search"]:not(.browser-default):focus:not([readonly])+label {
     background-color: #448aff;
 }
 
+.price-input-field {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.filter-input-field {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: 0 1px 0 0 #9e9e9e;
+}
+
 .pagination li {
     font-family: 'Bebas Neue', sans-serif;
     background-color: white;
@@ -439,6 +507,10 @@ tr:hover {
     background-color: white;
     border: solid black 2px;
     padding: 5px 30px 30px 30px;
+}
+
+.edit-profile-container {
+    padding-top: 20px;
 }
 
 .cancel {

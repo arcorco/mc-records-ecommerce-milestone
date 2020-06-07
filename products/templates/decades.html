@@ -11,7 +11,7 @@
     <form method="GET">
       <div class="sort-div col s4 m12">
         <h4>Sort by...</h4>
-        <div class="input-field">
+        <div class="input-field filter-input-field">
           <select id="sort" name="sort">
             <option value="" disabled selected>Sort by</option>
             <option value="recent">Recently added</option>
@@ -22,7 +22,7 @@
       </div>
       <div class="filter-div filter-field col s4 m12">
         <h4>Filter by...</h4>
-        <div class="input-field">
+        <div class="input-field filter-input-field">
           <select multiple name="artist" id="artist">
             <option value="" disabled selected>Artist</option>
             {% for artist in artist_list %}
@@ -30,7 +30,7 @@
             {% endfor %}
           </select>
         </div>
-        <div class="input-field">
+        <div class="input-field filter-input-field">
           <select multiple name="genre" id="genre">
             <option value="" disabled selected>Genre</option>
             {% for genre in genres %}
@@ -39,7 +39,7 @@
           </select>
         </div>
       </div>
-      <div class="input-field filter-field col s4 m12">
+      <div class="input-field filter-field col s4 m12 price-input-field">
         <h5>Price range</h5>
         <div class="noUiSlider" id="price-slider" name="price"></div>
         <input id="price_min" name="price_min" type="hidden" value=""></input>
