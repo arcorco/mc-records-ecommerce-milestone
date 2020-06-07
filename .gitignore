@@ -9,4 +9,3 @@ static/admin
 static/html
 static/js/jquery.*
 static/js/*.min.js
-static/images/README_images
