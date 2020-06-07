@@ -24,7 +24,7 @@
     {% for item in cart_items %}
     <div class="row">
         <div class="col s6 m4">
-            {% cloudinary item.product.cover width=150 height=150 %}
+            {% cloudinary item.product.cover width=150 height=150 alt="Album cover" %}
         </div>
         <div class="col m4 hide-on-small-only">
             <h6>{{ item.product.album }}</h6>

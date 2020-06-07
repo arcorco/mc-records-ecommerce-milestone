@@ -11,10 +11,10 @@
     {% for item in cart_items %}
     <div class="row">
         <div class="col m4 l3 hide-on-small-only">
-            {% cloudinary item.product.cover width=190 height=190 %}
+            {% cloudinary item.product.cover width=190 height=190 alt="Album cover" %}
         </div>
         <div class="col s6 hide-on-med-and-up">
-            {% cloudinary item.product.cover width=150 height=150 %}
+            {% cloudinary item.product.cover width=150 height=150 alt="Album cover" %}
         </div>
         <div class="col m3 l4 hide-on-small-only">
             <h4>{{ item.product.album }}</h4>

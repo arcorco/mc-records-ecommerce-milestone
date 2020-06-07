@@ -15,7 +15,7 @@
             <div class="recently-released center-align">
                 <a href="{%  url 'product_detail' product.id %}">
                     <div class="product">
-                        {% cloudinary product.cover width=220 height=220 %}
+                        {% cloudinary product.cover width=220 height=220 alt="Album cover" %}
                     </div>
                     <span class="badge new recently-released-badge" data-badge-caption="">Tell me more</span>
                 </a>
@@ -29,7 +29,7 @@
             <div class="recently-released">
                 <a href="{%  url 'product_detail' product.id %}">
                     <div class="product">
-                        {% cloudinary product.cover width=340 height=340 %}
+                        {% cloudinary product.cover width=340 height=340 alt="Album cover" %}
                     </div>
                     <span class="badge new recently-released-badge" data-badge-caption="">Tell me more</span>
                 </a>
@@ -76,7 +76,7 @@
             <li>
                 <div class="product">
                     <a href="{%  url 'product_detail' product.id %}">
-                        {% cloudinary product.cover width=300 height=300 %}
+                        {% cloudinary product.cover width=300 height=300 alt="Album cover" %}
                     </a>
                 </div>
             </li>
