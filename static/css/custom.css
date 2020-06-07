@@ -369,6 +369,7 @@ tr:hover {
 /*--------------------------------------------------Cart page-------------*/
 
 .cart-container {
+    padding-top: 1em;
     height: 100%;
 }
 
@@ -403,7 +404,7 @@ tr:hover {
 }
 
 .reset-password-btn {
-    margin-left: 15px;
+    margin-top: 15px;
 }
 
 .detail-container {
@@ -579,6 +580,11 @@ tr:hover {
 
     .search-form label {
         margin-top: -10px;
+    }
+
+    .reset-password-btn {
+        margin-top: 0px;
+        margin-left: 15px;
     }
 }
 
